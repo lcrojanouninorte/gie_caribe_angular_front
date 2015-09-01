@@ -1,0 +1,300 @@
+    |.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+.thumbnail {
+    height: 200px;
+}
+
+.thumbnail img.pull-right {
+    width: 50px;
+}
+
+body {
+    background-color: white;
+    font-size: 13px;
+    font: normal 13px arial, sans-serif;
+}
+
+.question_bg {
+    float: right;
+    display: inline;
+    position: absolute;
+    right: 90px;
+    z-index: -1;
+    top: 480px;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+
+.question_bg img {
+    width: 120%
+}
+
+.panel-opacity {
+    background-color: rgba(255, 255, 255, 0.7)
+}
+
+.progress {
+    height: 15px;
+    font-size: 15px;
+}
+
+.input-xs {
+    height: 30px;
+    padding: 0px 5px;
+    font-size: 13px;
+    line-height: 1;
+    border-radius: 2px;
+}
+
+legend {
+    width: auto;
+}
+
+fieldset {
+    width: auto;
+    border: 1px solid #c0c0c0;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+
+/* custom inclusion of right, left and below tabs */
+
+.tabs-below > .nav-tabs,
+.tabs-right > .nav-tabs,
+.tabs-left > .nav-tabs {
+    border-bottom: 0;
+}
+
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+    display: none;
+}
+
+.tab-content > .active,
+.pill-content > .active {
+    display: block;
+}
+
+.tabs-below > .nav-tabs {
+    border-top: 1px solid #ddd;
+}
+
+.tabs-below > .nav-tabs > li {
+    margin-top: -1px;
+    margin-bottom: 0;
+}
+
+.tabs-below > .nav-tabs > li > a {
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+}
+
+.tabs-below > .nav-tabs > li > a:hover,
+.tabs-below > .nav-tabs > li > a:focus {
+    border-top-color: #ddd;
+    border-bottom-color: transparent;
+}
+
+.tabs-below > .nav-tabs > .active > a,
+.tabs-below > .nav-tabs > .active > a:hover,
+.tabs-below > .nav-tabs > .active > a:focus {
+    border-color: transparent #ddd #ddd #ddd;
+}
+
+.tabs-left > .nav-tabs > li,
+.tabs-right > .nav-tabs > li {
+    float: none;
+}
+
+.tabs-left > .nav-tabs > li > a,
+.tabs-right > .nav-tabs > li > a {
+    min-width: 74px;
+    margin-right: 0;
+    margin-bottom: 3px;
+}
+
+.tabs-left > .nav-tabs {
+    float: left;
+    margin-right: 19px;
+    border-right: 1px solid #ddd;
+}
+
+.tabs-left > .nav-tabs > li > a {
+    margin-right: -1px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+}
+
+.tabs-left > .nav-tabs > li > a:hover,
+.tabs-left > .nav-tabs > li > a:focus {
+    border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+}
+
+.tabs-left > .nav-tabs .active > a,
+.tabs-left > .nav-tabs .active > a:hover,
+.tabs-left > .nav-tabs .active > a:focus {
+    border-color: #ddd transparent #ddd #ddd;
+    *border-right-color: #ffffff;
+}
+
+.tabs-right > .nav-tabs {
+    float: right;
+    margin-left: 19px;
+    border-left: 1px solid #ddd;
+}
+
+.tabs-right > .nav-tabs > li > a {
+    margin-left: -1px;
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.tabs-right > .nav-tabs > li > a:hover,
+.tabs-right > .nav-tabs > li > a:focus {
+    border-color: #eeeeee #eeeeee #eeeeee #dddddd;
+}
+
+.tabs-right > .nav-tabs .active > a,
+.tabs-right > .nav-tabs .active > a:hover,
+.tabs-right > .nav-tabs .active > a:focus {
+    border-color: #ddd #ddd #ddd transparent;
+    *border-left-color: #ffffff;
+}
+
+.full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+}
+
+.partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+}
+
+input.ng-invalid {
+    border: 1px solid red;
+}
+
+input.ng-valid {
+    border: 1px solid green;
+}
+ 
+    .form-horizontal .control-label {
+        text-align: right;
+        margin-bottom: 0;
+        padding-top: 0px;
+    }
+    .container-fluid {
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .navbar {
+        position: relative;
+        min-height: 60px;
+        margin-bottom: 0px;
+        border: 1px solid transparent;
+    }
+    th {
+        text-align: center;
+        font-weight: bold;
+        font-size: 14px
+    }
+    .underlined {
+        text-decoration: underline;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: #DDE9ED;
+    }
+    .ng-hide-add,
+    .ng-hide-remove {
+        /* ensure visibility during the transition */
+        display: block !important;
+        /* yes, important */
+    }
+    .cssSlideUp {
+        transition: .5s linear all;
+        height: 80px;
+        overflow: hidden;
+    }
+    .cssSlideUp.ng-hide {
+        height: 0;
+    }
+    .page {
+        bottom: 0;
+        padding-top: 200px;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 100%;
+    }
+    .page h1 {
+        font-size: 60px;
+    }
+    .page a {
+        margin-top: 50px;
+    }
+
+    .page-home {
+        background: #00D0BC;
+        color: #00907c;
+    }
+    .page-about {
+        background: #E59400;
+        color: #a55400;
+    }
+    .page-contact {
+        background: #ffa6bb;
+        color: #9e0000;
+    }
+ 
+    .ng-enter {
+        -webkit-transition: 1s;
+        transition: 1s;
+        opacity: 0;
+    }
+    .ng-enter-active {
+        opacity: 1;
+    }
+    .ng-leave {
+        -webkit-transition: 1s;
+        transition: 1s;
+    }
+    .ng-leave-active {
+        opacity: 0;
+    }
+    .my-fade-container {
+        position: relative;
+    }
+    .my-fade-animation.ng-enter,
+    .my-fade-animation.ng-leave {
+        -webkit-transition: 0.5s linear all;
+        -moz-transition: 0.5s linear all;
+        -o-transition: 0.5s linear all;
+        transition: 0.5s linear all;
+    }
+    .my-fade-animation.ng-enter {
+        z-index: 100;
+        opacity: 0;
+    }
+    .my-fade-animation.ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+    .my-fade-animation.ng-leave {
+        z-index: 101;
+        opacity: 1;
+    }
+    .my-fade-animation.ng-leave.ng-leave-active {
+        opacity: 0;
+    }

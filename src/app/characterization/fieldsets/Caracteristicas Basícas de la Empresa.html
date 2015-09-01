@@ -1,0 +1,81 @@
+
+						<!-- Appended Input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="appendedtext">¿Cuál de estos sectores (CIIU Rev. 4) representa plenamente la actividad económica principal de su empresa?</label>
+							<div class="col-md-5">
+								<div class="input-group">
+									<input name="appendedtext" class="form-control input-xs" id="appendedtext" required="" type="text" ng-model="answers.s3.p1">
+									<ciiuv-modal-btn class="input-group-addon input-xs" ></ciiuv-modal-btn>
+								</div>
+								
+							</div>
+						</div>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="bsEmpresa.monto">Monto de ventas nacionales (miles de pesos corrientes)</label>
+							<div class="col-md-4">
+								<input name="bsEmpresa.monto" class="form-control input-xs" id="bsEmpresa.monto" required="" type="text" placeholder="" ng-model="answers.s3.p2">
+								
+							</div>
+						</div>
+						<!-- Multiple Radios (inline) -->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="bsEmpresa.ventas">En los últimos tres años las ventas de su empresa han:</label>
+							<div class="col-md-8">
+								<label class="radio-inline" for="bsEmpresa.ventas-0">
+									<input name="bsEmpresa.ventas" id="bsEmpresa.ventas-0" type="radio" checked="checked" value="Aumentado"  ng-model="answers.s3.p3">
+									Aumentado
+								</label>
+								<label class="radio-inline" for="bsEmpresa.ventas-1">
+									<input name="bsEmpresa.ventas" id="bsEmpresa.ventas-1" type="radio" value="Disminuido" answers.s3.p3>
+									Disminuido
+								</label>
+								<label class="radio-inline" for="bsEmpresa.ventas-2">
+									<input name="bsEmpresa.ventas" id="bsEmpresa.ventas-2" type="radio" value="Se han mantenido constantes" ng-model="answers.s3.p3">
+									Se han mantenido constantes
+								</label>
+							</div>
+						</div>
+						<!-- Multiple Radios (inline) -->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="bsEmpresa.exportacion">¿Su empresa ha exportado en los últimos 2 años? </label>
+							<div class="col-md-8">
+								<label class="radio-inline" for="bsEmpresa.exportacion-0">
+									<input name="bsEmpresa.exportacion" id="bsEmpresa.exportacion-0" type="radio" checked="checked" value="1" ng-model="answers.s3.p4">
+									Si
+								</label>
+								<label class="radio-inline" for="bsEmpresa.exportacion-1">
+									<input name="bsEmpresa.exportacion" id="bsEmpresa.exportacion-1" type="radio" value="0" ng-model="answers.s3.p4">
+									No
+								</label>
+							</div>
+						</div>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="bs.Empresa.Importancia">Ordene en importancia el mercado geográfico de las ventas de bienes o servicios de su empresa </label>
+							<div class="col-md-6">
+								 <div class="btn-group">
+				        <label class="btn btn-info btn-sm" ng-model="opc.elem" btn-checkbox ng-click="order.setOrdersRes($index)" ng-repeat="opc in order.check">{{opc.text}}  </label>
+				       
+       
+   						 </div>
+
+								<span class="help-block" style="color:green">{{order.message}}</span>
+							</div>
+						</div>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="bsEmpresa.empleados">Número de empleados (promedio anual) del último año </label>
+							<div class="col-md-2">
+								<input name="bsEmpresa.empleados" class="form-control input-xs" id="bsEmpresa.empleados" required="" type="text" placeholder=" " ng-model="answers.s3.p6">
+								<span class="help-block"> </span>
+							</div>
+						</div>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="bsEmpresa.empleadosCont">Número de empleados con contrato civil de prestación de servicios</label>
+							<div class="col-md-2">
+								<input name="bsEmpresa.empleadosCont" class="form-control input-xs" id="bsEmpresa.empleadosCont" type="text" placeholder="" ng-model="answers.s3.p7">
+								
+							</div>
+						</div>
