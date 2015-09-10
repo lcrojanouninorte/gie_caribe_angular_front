@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('InnovationManagement', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ui.bootstrap']);
+    .module('InnovationManagement', ['ngAnimate','toaster', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ui.bootstrap','validation', 'validation.rule', 'vr.directives.slider']);
 
 })();

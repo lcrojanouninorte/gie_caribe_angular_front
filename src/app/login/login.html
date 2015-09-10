@@ -1,72 +1,72 @@
 
-
-
-
-        <!-- Top content -->
-        <div class="top-content">
-        	
+<div class="top-content">
+    
+            <!-- Top content -->
             <div class="inner-bg">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong></strong> Login Form</h1>
-                            <div class="description">
-                            	<p>
-	                            	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-	                            	
-                            	</p>
-                            </div>
+                        <div class="col-sm-12 text-center">
+                            <h2 class="text-center"><strong></strong>Implementación de un programa de gestión de la innovación empresarial para fortalecer las Pymes de sectores estratégicos en el Departamento del Atlántico</h2>
                         </div>
+                       
+                               
+                            
                     </div>
                     <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 form-box">
-                        	<div class="form-top">
-                        		<div class="form-top-left">
-                        			<h3>Login</h3>
-                            		<p>Ingrese su usuario y contraseña para ingresar</p>
-                        		</div>
-                        		<div class="form-top-right">
-                        			<i class="fa fa-lock"></i>
-                        		</div>
+                        <div class="col-sm-6  col-sm-offset-3 form-box">
+                            <div class="form-top">
+                                <div class="form-top-left text-center">
+                                    <h3>Instrumento de caracterización de la actividad innovadora</div>
+                              
+                                <div class="form-top-left">
+                                     <p>  <i class="glyphicon glyphicon-lock"></i> Ingrese su E-mail y contraseña para ingresar</p>
+                                </div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="" method="post" class="login-form">
-			                    	<div class="form-group">
-			                    		<label class="sr-only" for="form-username">usuario</label>
-			                        	<input type="text" name="form-username" placeholder="Usuario..." class="form-username form-control" id="form-username">
-			                        </div>
-			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Contraseña</label>
-			                        	<input type="password" name="form-password" placeholder="Contraseña..." class="form-password form-control" id="form-password">
-			                        </div>
-			                        <button type="submit" class="btn">Ingresar</button>
-			                    </form>
-		                    </div>
+                                <form class="login-form" name="Form" role="form" ng-submit="submit()">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-username">E-Mail</label>
+                                        <input type="text" name="form-username" placeholder="mail@mail.com..." class="form-username form-control" id="form-username" ng-model="user.user.email"   validator="email" email-error-message="Ingrese un Email valido"  success-message=" ">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-password">Contraseña</label>
+                                        <input type="password" name="form-password" placeholder="Contraseña..." class="form-password form-control" id="form-password" ng-model="user.user.password"  validator="minlength=4" lenght-error-message="Minimo 4 letras o digitos"  email-success-message=" ">
+                                    </div>
+                                    <button ng-disabled="!Form.$valid" class="btn btn-success" ng-click="ingresar(Form)">Ingresar</button>
+                                    <button ng-disabled="!Form.$valid" class="btn btn-info" ng-click="registrar()">Registrarse</button>
+                                </form>
+                            </div>
                         </div>
+
                     </div>
+                            <div class="account col-xs-12 text-center  ">
+             
+                <p>Olvido su <a href="#">contraseña?</a></p> 
+             
+        </div>
+                    
+
                     <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 social-login">
-                        	<h3>...O ingrese con:</h3>
-                        	<div class="social-login-buttons">
-	                        	<a class="btn btn-link-2" href="#">
-	                        		<i class="fa fa-facebook"></i> Facebook
-	                        	</a>
-	                        	<a class="btn btn-link-2" href="#">
-	                        		<i class="fa fa-twitter"></i> Twitter
-	                        	</a>
-	                        	<a class="btn btn-link-2" href="#">
-	                        		<i class="fa fa-google-plus"></i> Google Plus
-	                        	</a>
-                        	</div>
-                        </div>
+                    <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
+                        <!-- <div class="col-sm-6 col-sm-offset-3 social-login">
+                            <h3>...O ingrese con:</h3>
+                            <div class="social-login-buttons">
+                                <a class="btn btn-link-2" href="#">
+                                    <i class="fa fa-facebook"></i> Facebook
+                                </a>
+                                <a class="btn btn-link-2" href="#">
+                                    <i class="fa fa-twitter"></i> Twitter
+                                </a>
+                                <a class="btn btn-link-2" href="#">
+                                    <i class="fa fa-google-plus"></i> Google Plus
+                                </a>
+                            </div>-->
                     </div>
                 </div>
             </div>
-            
-        </div>
+        
 
+  
+</div>
+
+   

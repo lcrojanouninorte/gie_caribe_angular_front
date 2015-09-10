@@ -1,18 +1,20 @@
 <nav class="navbar navbar-static-top navbar-default">
-  <div class="container-fluid">
+  <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" ng-href="#caracterizacion">
-        <span class="glyphicon glyphicon-home"></span> Caracterización
+        <span class="glyphicon glyphicon-home"></span> GIE
       </a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
     
-        <li><a ng-href="#caracterizacion" >Caraterización</a></li>
+        <!--<li><a ng-href="#caracterizacion" >Caraterización</a></li>-->
           <!--  <li><a ng-href="#home">Inicio</a></li>
-        <li><a ng-href="#home">Salir</a></li>
-    <li><a  ng-href="#login">Login</a></li>-->
+        <li><a ng-href="#home">Salir</a></li>-->
+        <!--<li  ng-show = "!vm.isLogged()"><a  ng-href="#login">Login</a></li>-->
+        <li ng-show="vm.isLogged()"><a ng-href="#logout" ng-click="vm.logout()">Salir</a></li>
+
         
       
       </ul>

@@ -11,7 +11,7 @@
     <div class="row" style="margin-top:30px" id="survey">
         <a name="survey" href></a>
         <div class="col-md-10 col-md-offset-1 ">
-            <p>Responda las siguientes preguntas. Puede guardar su progreso haciendo clic en guardar.</p>
+            <p>Respuesta de {{user_consult}}</p>
         </div>
     </div>
     <!--
@@ -26,12 +26,7 @@
     <div class="jumbotron" ng-show="finished==true">
         <div ng-repeat="session in sessions">
         </div>
-        <div class="container">
-            <div class="col-md-offset-2 col-md-8">
-                <div class="alert alert-success" role="alert">
-                    <h4><span class="glyphicon glyphicon-ok"></span> Felicitaciones! Usted a Finalizado Satisfactoriamente, Gracias por su tiempo.</h4></div>
-            </div>
-        </div>
+
     </div>
     <div class="row">
         <div class="col-md-10 col-md-offset-1 ">
@@ -41,22 +36,12 @@
                         <div class="col-md-4">
                             <h3 class="panel-title">{{characterizationCtrl.panelTitle}}</h3>
                         </div>
-                        <div class="col-md-8">
-                            <div class="btn-group" role="group" aria-label="..." style="float:right">
-                                <button type="button" class="btn btn-xs  btn-primary" ng-click="characterizationCtrl.changePage(-1)">
-                                    <div class="glyphicon glyphicon-chevron-left"></div> Anterior
-                                </button>
-                                <button type="button" class="btn btn-xs  btn-primary" ng-click="characterizationCtrl.changePage(1)">
-                                    Siguiente
-                                    <div class="glyphicon glyphicon-chevron-right"></div>
-                                </button>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="panel-body">
                     <form name="characterizationForm" class="form-horizontal" role="form" novalidate>
-                        <p>Bienvenido {{get_user_mail()}} </p>
+
                         <tabset class="tabs-left col-sm-12">
                             <tab class="col-md-12" ng-repeat="page in characterizationCtrl.pages" active="page.active" ng-click="characterizationCtrl.setTitle(sessions[page.key].title)">
                                 <tab-heading>{{sessions[page.key].title}}
@@ -64,28 +49,14 @@
                                  <span ng-show="sessions[page.key].showUnaswered>0" class="badge">{{sessions[page.key].unAnswered}}</span>--></tab-heading>
                                 <fieldset>
                                     <legend>
-                                        <save-btn ng-click='save()'></save-btn>
+                                        
                                     </legend>
                                     <ng-include src="'app/characterization/fieldsets/'+sessions[page.key].title+'.html'" class="my-fade-animation"></ng-include>
-                                    <div class="col-md-offset-3 col-md-6 text-center" ng-show="properties.progress>=100" ng-click="finish()">
-                                        <div class="btn-group text-center" role="group">
-                                            <button type="button" class="btn btn-md  btn-success">
-                                                <div class="glyphicon glyphicon-send"></div> Finalizar
-                                            </button>
-                                        </div>
-                                    </div>
+
                                     <div class="col-md-offset-3 col-md-6 text-center">
                                         <br>
                                         <br>
-                                        <div class="btn-group text-center" role="group">
-                                            <button type="button" class="btn btn-xs  btn-primary" ng-click="characterizationCtrl.changePage(-1)">
-                                                <div class="glyphicon glyphicon-chevron-left"></div> Anterior
-                                            </button>
-                                            <button type="button" class="btn btn-xs  btn-primary" ng-click="characterizationCtrl.changePage(1)">
-                                                Siguiente
-                                                <div class="glyphicon glyphicon-chevron-right"></div>
-                                            </button>
-                                        </div>
+
                                     </div>
                                 </fieldset>
                                 <!--        <div class="row" style="margin-top:10px">
@@ -98,12 +69,7 @@
                 </div>
                 <div class="panel-footer">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 ">
-                                <!-- Default panel contents -->
-                                <div>Comuníquese con cualquiera de nuestros consultores a las siguientes líneas telefónicas: 301 485 1346 - 301 485 1536 - 300 265 8510 - 301 485 1421 - 301 485 1567 - 301 484 9940.</div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

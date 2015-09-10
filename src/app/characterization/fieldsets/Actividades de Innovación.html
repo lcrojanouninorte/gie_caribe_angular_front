@@ -1,175 +1,135 @@
  
-    <label class="col-md-12 ">
-        <p>Indique si ha desarrollado alguna de las siguientes actividades durante el periodo 2013 – 2014?</p>
+    
+    <label class="col-sm-12 ">
+        <p>21. Indique si ha invertido en alguna de las siguientes actividades de innovación durante el periodo 2013-2014, anotando las respectivas fuentes de financiación utilizadas</p>
     </label>
-    <div class="col-md-12">
-        <table class="table table-striped table-bordered">
+    <div class="col-sm-12 ">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-responsive">
             <thead>
                 <tr>
-                    <th class="col-md-9">
+                    <th >
                         <p>Actividad </p>
                     </th>
-                    <th>
-                        <p>Si</p>
+                    <th  class="col-2-sm">
+                        <p>Recursos Propios </p>
                     </th>
-                    <th>
-                        <p>No</p>
+                    <th  class="col-2-sm">
+                        <p>Banca Privada </p>
+                    </th>
+                    <th class="col-2-sm">
+                        <p>Banca Pública</p>
+                    </th>
+                    <th class="col-2-sm">
+                        <p>Otros Recursos</p>
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="3" class="underlined">Actividades de I+D Internas </td>
+                    <td class="underlined"><a href="#"  tooltip-placement="right" tooltip="Trabajos de creación sistemáticos llevados a cabo dentro de la empresa con el fin de aumentar el volumen de conocimientos y su utilización para idear bienes, servicios, o procesos nuevos o mejorados" tooltip-class="customClass">Actividades de I+D Internas <p class="glyphicon glyphicon-info-sign"></p></a> </td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p11" name="answers.s8.s11" ></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p12" name="answers.s8.s12" ></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p13" name="answers.s8.s13" ></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p14" name="answers.s8.s14" ></td>
+                    
                 </tr>
+ 
                 <tr>
-                    <td>Trabajos de creación sistemáticos llevados a cabo dentro de la empresa con el fin de aumentar el volumen de conocimientos y su utilización para idear bienes, servicios, o procesos nuevos o mejorados </td>
-                    <td class="text-center">
-                        <input name="answers.s8.p1" type="radio" checked="true" value="1" ng-model="answers.s8.p1"  ng-click="answers.s8.updateTotal()">
-                    </td>
-                    <td class="text-center">
-                        <input name="answers.s8.p1" type="radio" value="0" ng-model="answers.s8.p1" ng-click="answers.s8.updateTotal()">
-                    </td>
+                    <td class="underlined"><a href="#"  tooltip-placement="right" tooltip="Adquisición o financiación de las mismas actividades que las arriba indicadas (I+D) pero realizadas por otras organizaciones públicas o privadas (incluye organismos de investigación)" tooltip-class="customClass">Adquisición de I+D (externa)   <p class="glyphicon glyphicon-info-sign"></p></a></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p21" name="answers.s8.s21"></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p22" name="answers.s8.s22"></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p23" name="answers.s8.s23"></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p24" name="answers.s8.s24"></td>
+                
+                    
+
+
                 </tr>
+             
                 <tr>
-                    <td colspan="3" class="underlined">Adquisición de I+D (externa) </td>
+                    <td class="underlined"><a href="#"  tooltip-placement="right" tooltip="Maquinaria y equipo, específicamente comprado para la producción o implementación de bienes, servicios o procesos nuevos o significativamente mejorados (No incluir aquellos registrados en I+D, item 1)" tooltip-class="customClass">Adquisición de maquinaria y equipo <p class="glyphicon glyphicon-info-sign"></p> </a> </td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p31" name="answers.s8.s31" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p32" name="answers.s8.s32" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p33" name="answers.s8.s33" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p34" name="answers.s8.s34" ng-click=""></td>
+                    
+
                 </tr>
+
                 <tr>
-                    <td>Adquisición o financiación de las mismas actividades que las arriba indicadas (I+D) pero realizadas por otras organizaciones públicas o privadas (incluye organismos de investigación)</td>
-                    <td class="text-center">
-                        <input name="answers.s8.p2" type="radio" checked="true" value="1" ng-model="answers.s8.p2" ng-click="answers.s8.updateTotal()">
-                    </td>
-                    <td class="text-center">
-                        <input name="answers.s8.p2" type="radio" value="0" ng-model="answers.s8.p2" ng-click="answers.s8.updateTotal()">
-                    </td>
+                    <td class="underlined"><a href="#"  tooltip-placement="right" tooltip="Adquisición, generación, outsourcing o arriendo de elementos de hardware, software y/o servicios para el manejo o procesamiento de la información, específicamente destinados a la producción o implementación de bienes, servicios o procesos nuevos o significativamente mejorados" tooltip-class="customClass">Tecnologías de información y telecomunicaciones   <p class="glyphicon glyphicon-info-sign"></p></a></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p41" name="answers.s8.s41" ng-click="answers.s8.s4"></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p42" name="answers.s8.s42" ng-click="answers.s8.s4"></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p43" name="answers.s8.s43" ng-click="answers.s8.s4"></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p44" name="answers.s8.s44" ng-click="answers.s8.s4"></td>
+                    
+
                 </tr>
+
                 <tr>
-                    <td colspan="3" class="underlined">Adquisición de maquinaria y equipo </td>
+                    <td class="underlined"><a href="#"  tooltip-placement="right" tooltip="Actividades de introducción en el mercado de bienes o servicios nuevos o significativamente mejorados, incluye investigación de mercado y publicidad de lanzamiento " tooltip-class="customClass">Mercadeo de innovaciones   <p class="glyphicon glyphicon-info-sign"></p></a></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p51" name="answers.s8.s51" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p52" name="answers.s8.s52" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p53" name="answers.s8.s53" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p54" name="answers.s8.s54" ng-click=""></td>
+                    
+
                 </tr>
+                
                 <tr>
-                    <td>Maquinaria y equipo, específicamente comprado para la producción o implementación de bienes, servicios o procesos nuevos o significativamente mejorados (No incluir aquellos registrados en I+D, item 1)</td>
-                    <td class="text-center">
-                        <input name="answers.s8.p3" type="radio" checked="true" value="1" ng-model="answers.s8.p3" ng-click="answers.s8.updateTotal()">
-                    </td>
-                    <td class="text-center">
-                        <input name="answers.s8.p3" type="radio" value="0" ng-model="answers.s8.p3" ng-click="answers.s8.updateTotal()">
-                    </td>
+                    <td class="underlined"><a href="#"  tooltip-placement="right" tooltip="Adquisición o uso bajo licencia, de patentes u otros registros de propiedad intelectual, de inventos no patentados y conocimientos técnicos o de otro tipo; de otras empresas u organizaciones para utilizar en las innovaciones de su empresa " tooltip-class="customClass">Transferencia de tecnología  <p class="glyphicon glyphicon-info-sign"></p></a></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p61" name="answers.s8.s61" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p62" name="answers.s8.s62" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p63" name="answers.s8.s63" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p64" name="answers.s8.s64" ng-click=""></td>
+                     
+
                 </tr>
+         
                 <tr>
-                    <td colspan="3" class="underlined">Tecnologías de información y telecomunicaciones </td>
+                    <td class="underlined"><a href="#"  tooltip-placement="right" tooltip="Asesorías para la utilización de conocimientos tecnológicos aplicados, por medio del ejercicio de un arte o técnica, específicamente contratadas para la producción o implementación de bienes, servicios o procesos nuevos o significativamente mejorados. Incluye inteligencia de mercados y vigilancia tecnológica" tooltip-class="customClass">Asistencia técnica y consultoría  <p class="glyphicon glyphicon-info-sign"></p></a> </td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p71" name="answers.s8.s71" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p72" name="answers.s8.s72" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p73" name="answers.s8.s73" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p74" name="answers.s8.s74" ng-click=""></td>
+                     
+
                 </tr>
+
                 <tr>
-                    <td>Adquisición, generación, outsourcing o arriendo de elementos de hardware, software y/o servicios para el manejo o procesamiento de la información, específicamente destinados a la producción o implementación de bienes, servicios o procesos nuevos o significativamente mejorados</td>
-                    <td class="text-center">
-                        <input name="answers.s8.p4" id="innovacion.producto.nuevos-0" type="radio" checked="true" value="1" ng-model="answers.s8.p4" ng-click="answers.s8.updateTotal()">
-                    </td>
-                    <td class="text-center">
-                        <input name="answers.s8.p4" type="radio" value="0" ng-model="answers.s8.p4" ng-click="answers.s8.updateTotal()">
-                    </td>
+                    <td class="underlined"><a href="#"  tooltip-placement="right" tooltip="Cambios en los métodos o patrones de producción y control de calidad, y elaboración de planos y diseños orientados a definir procedimientos técnicos, necesarios para la producción o implementación de bienes, servicios o procesos nuevos o significativamente mejorados en la empresa" tooltip-class="customClass">Ingeniería y diseño industrial <p class="glyphicon glyphicon-info-sign"></p></a></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p81" name="answers.s8.s81" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p82" name="answers.s8.s82" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p83" name="answers.s8.s83" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p84" name="answers.s8.s84" ng-click=""></td>
+                    
+
                 </tr>
+
                 <tr>
-                    <td colspan="3" class="underlined">Mercadeo de innovaciones </td>
+                    <td class="underlined"><a href="#"  tooltip-placement="right" tooltip="Formación a nivel de maestría y doctorado, y capacitación que involucra un grado de complejidad significativo (requiere de un personal capacitador altamente especializado). Se incluye la realizada mediante financiación con recursos de la empresa y la impartida directamente dentro de la empresa. " tooltip-class="customClass">Formación y capacitación especializada <p class="glyphicon glyphicon-info-sign"></p></a> </td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p91" name="answers.s8.s91" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p92" name="answers.s8.s92" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p93" name="answers.s8.s93" ng-click=""></td>
+                    <td class="text-center col-sm-2"><input type="checkbox" ng-model="answers.s8.p94" name="answers.s8.s94" ng-click=""></td>
+                    
+
                 </tr>
-                <tr>
-                    <td>Actividades de introducción en el mercado de bienes o servicios nuevos o significativamente mejorados, incluye investigación de mercado y publicidad de lanzamiento </td>
-                    <td class="text-center">
-                        <input name="answers.s8.p5" id="innovacion.producto.nuevos-0" type="radio" checked="true" value="1" ng-model="answers.s8.p5" ng-click="answers.s8.updateTotal()">
-                    </td>
-                    <td class="text-center">
-                        <input name="answers.s8.p5" type="radio" value="0" ng-model="answers.s8.p5" ng-click="answers.s8.updateTotal()"> 
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3" class="underlined">Transferencia de tecnología </td>
-                </tr>
-                <tr>
-                    <td>Adquisición o uso bajo licencia, de patentes u otros registros de propiedad intelectual, de inventos no patentados y conocimientos técnicos o de otro tipo; de otras empresas u organizaciones para utilizar en las innovaciones de su empresa </td>
-                    <td class="text-center">
-                        <input name="answers.s8.p6" id="innovacion.producto.nuevos-0" type="radio" checked="true" value="1" ng-model="answers.s8.p6" ng-click="answers.s8.updateTotal()">
-                    </td>
-                    <td class="text-center">
-                        <input name="answers.s8.p6" type="radio" value="0" ng-model="answers.s8.p6" ng-click="answers.s8.updateTotal()">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3" class="underlined">Asistencia Técnica y Consultoría </td>
-                </tr>
-                <tr>
-                    <td>Asesorías para la utilización de conocimientos tecnológicos aplicados, por medio del ejercicio de un arte o técnica, específicamente contratadas para la producción o implementación de bienes, servicios o procesos nuevos o significativamente mejorados. Incluye inteligencia de mercados y vigilancia tecnológica</td>
-                    <td class="text-center">
-                        <input name="answers.s8.p7" id="innovacion.producto.nuevos-0" type="radio" checked="true" value="1" ng-model="answers.s8.p7" ng-click="answers.s8.updateTotal()">
-                    </td>
-                    <td class="text-center">
-                        <input name="answers.s8.p7" type="radio" value="0" ng-model="answers.s8.p7" ng-click="answers.s8.updateTotal()">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3" class="underlined">Ingeniería y diseño industrial</td>
-                </tr>
-                <tr>
-                    <td>Cambios en los métodos o patrones de producción y control de calidad, y elaboración de planos y diseños orientados a definir procedimientos técnicos, necesarios para la producción o implementación de bienes, servicios o procesos nuevos o significativamente mejorados en la empresa</td>
-                    <td class="text-center">
-                        <input name="answers.s8.p8" id="innovacion.producto.nuevos-0" type="radio" checked="true" value="1" ng-model="answers.s8.p8" ng-click="answers.s8.updateTotal()">
-                    </td>
-                    <td class="text-center">
-                        <input name="answers.s8.p8" type="radio" value="0" ng-model="answers.s8.p8" ng-click="answers.s8.updateTotal()">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3" class="underlined">Formación y capacitación especializada </td>
-                </tr>
-                <tr>
-                    <td>Formación a nivel de maestría y doctorado, y capacitación que involucra un grado de complejidad significativo (requiere de un personal capacitador altamente especializado). Se incluye la realizada mediante financiación con recursos de la empresa y la impartida directamente dentro de la empresa. </td>
-                    <td class="text-center">
-                        <input name="answers.s8.p9" id="innovacion.producto.nuevos-0" type="radio" checked="true" value="1" ng-model="answers.s8.p9" ng-click="answers.s8.updateTotal()">
-                    </td>
-                    <td class="text-center">
-                        <input name="answers.s8.p9" type="radio" value="0" ng-model="answers.s8.p9" ng-click="answers.s8.updateTotal()">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="1" class="underlined">Total </td>
-                    <td colspan="2" class="text-center">{{properties.total}} </td>
-                </tr>
+
             </tbody>
         </table>
+        </div>
         <!-- Multiple Radios (inline) -->
+       
         <div class="form-group">
+            <label class="col-md-12 ">22. ¿Su empresa cuenta con Departamento de I+D? </label>
             <div class="col-md-12">
-                <!-- Select Basic -->
-                <div class="form-group">
-                    <label class="col-md-7" for="answers.s8.p10">Fuente de financiación de las Actividades de Ciencia, Tecnología e Innovación (ACTI):</label>
-                    <div class="col-md-5">
-                        <select name="answers.s8.p10" class="form-control input-xs" id="answers.s8.p10" ng-model="answers.s8.p10">
-                            <option value="Recursos propios">Recursos propios</option>
-                            <option value="Otras empresas del grupo"> Otras empresas del grupo </option>
-                            <option value="Recursos públicos"> Recursos públicos</option>
-                            <option value="Banca privada"> Banca privada </option>
-                            <option value="Otras empresas"> Otras empresas </option>
-                            <option value="Fondos de capital privado"> Fondos de capital privado </option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-12 ">¿Ha utilizado financiamiento público?</label>
-            <div class="col-md-12">
-                <label class="radio-inline" for="answers.s8.p11">
-                    <input name="answers.s8.p11" type="radio" value="1" ng-model="answers.s8.p11"> Si
+                <label class="radio-inline" for="answers.s8.p101">
+                    <input name="answers.s8.p10" type="radio" value="1" ng-model="answers.s8.p10"> Si
                 </label>
-                <label class="radio-inline" for="answers.s8.p11">
-                    <input name="answers.s8.p11" type="radio" value="0" ng-model="answers.s8.p11"> No
-                </label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-12 ">¿Su empresa cuenta con Departamento de I+D? </label>
-            <div class="col-md-12">
-                <label class="radio-inline" for="answers.s8.p12">
-                    <input name="answers.s8.p12" type="radio" value="1" ng-model="answers.s8.p12"> Si
-                </label>
-                <label class="radio-inline" for="answers.s8.p12">
-                    <input name="answers.s8.p12" type="radio" value="0" ng-model="answers.s8.p12"> No
+                <label class="radio-inline" for="answers.s8.p102">
+                    <input name="answers.s8.p10" type="radio" value="0" ng-model="answers.s8.p10"> No
                 </label>
             </div>
         </div>

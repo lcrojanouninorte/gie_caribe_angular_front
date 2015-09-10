@@ -1,0 +1,8 @@
+<!-- Text input-->
+
+    <div class="col-md-6">
+        <div class="btn-group">
+            <label class="btn btn-info btn-sm" ng-model="opc.elem" btn-checkbox ng-click="order.setOrdersRes($index)" ng-repeat="opc in order.check">{{opc.text}} </label>
+        </div>
+        <span class="help-block" style="color:green">{{order.message}}</span>
+    </div>

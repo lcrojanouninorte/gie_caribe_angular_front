@@ -17,18 +17,29 @@
         url: '/caracterizacion',
         templateUrl: 'app/characterization/characterization.html',
         controller: 'CharacterizationController',
-        controllerAs: 'characterizationCtrl'
+        controllerAs: 'characterizationCtrl',
+         authenticate: true
+      }).state('detalle', {
+        url: '/detalle/:id',
+        templateUrl: 'app/characterization/characterization.detalle.html',
+        controller: 'CharacterizationController',
+        controllerAs: 'characterizationCtrl',
+         authenticate: false
       }).state('login', {
         url: '/login',
         templateUrl: 'app/login/login.html',
+        controller: 'LoginController',
+        controllerAs: 'login',
+        reload: true
       
+      }).state('resultados', {
+        url: '/resultados',
+        templateUrl: 'app/results/results.html',
+        controller: 'ResultsController',
+        controllerAs: 'resultCtrl',
+         authenticate: false
       }).state('survey', {
-        url: '/caracterizacion/instrumento',
-        onEnter: function () {
-            $('html, body').animate({
-                scrollTop: $("#survey").offset().top
-            }, 2000);
-        }
+        url: '/caracterizacion/instrumento'
     });
 
     $urlRouterProvider.otherwise('/login');

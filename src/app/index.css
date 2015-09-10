@@ -17,6 +17,7 @@ body {
     background-color: white;
     font-size: 13px;
     font: normal 13px arial, sans-serif;
+    background-image: url("../assets/bgs/bg2.jpg");
 }
 
 .question_bg {
@@ -41,6 +42,7 @@ body {
 .progress {
     height: 15px;
     font-size: 15px;
+        background-color: #CDCDCE;
 }
 
 .input-xs {
@@ -212,11 +214,30 @@ input.ng-valid {
         font-size: 14px
     }
     .underlined {
-        text-decoration: underline;
+        text-decoration: none;
         font-weight: bold;
+        color: black;
         font-size: 14px;
         background-color: #DDE9ED;
     }
+    .underlined a{
+      color:   #232425;  
+      text-decoration: none!important        
+    }
+
+            /* Specify styling for tooltip contents */
+            .tooltip.customClass .tooltip-inner {
+                    color: #FFFFFF;
+    background-color: #2C3E50;
+                box-shadow: 0 6px 12px rgba(0,0,0,.175);
+                font-size:  14px;
+            }
+            /* Hide arrow */
+            .tooltip.customClass .tooltip-arrow {
+                display: none;
+            }
+       
+   
     .ng-hide-add,
     .ng-hide-remove {
         /* ensure visibility during the transition */
@@ -298,3 +319,192 @@ input.ng-valid {
     .my-fade-animation.ng-leave.ng-leave-active {
         opacity: 0;
     }
+
+
+
+
+/*dddddddddddddd*/
+.rainbow-slider {
+  background: linear-gradient(to right, #ff4c4c 0%, #f7f733 50%, #3be240 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 30px;
+  border: none;
+  /*box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);*/
+  position:     relative;
+  height: 5px; }
+                    
+  .rainbow-slider .ui-slider-handle {
+    background: rgba(255, 255, 255, 0.21);
+    border-color: rgba(0, 0, 0, 0.56);
+    box-shadow: inset 0 0 2px 2px rgba(255, 255, 255, 0.89);
+    border-radius: 20px;
+    top: -8px; }
+                    
+    .rainbow-slider .ui-slider-handle.ui-state-hover, 
+    .rainbow-slider .ui-slider-handle:hover, 
+    .rainbow-slider .ui-slider-handle.ui-state-focus, 
+    .rainbow-slider .ui-slider-handle:focus, 
+    .rainbow-slider .ui-slider-handle.ui-state-active {
+      background: rgba(255, 255, 255, 0.21); }
+                    
+  .rainbow-slider .ui-slider-pip .ui-slider-label {
+    width: 6em;
+    margin-left: -3em; }
+                    
+    
+                    
+  .rainbow-slider .ui-slider-pip .ui-slider-line {
+    top: 1px; }
+                    
+  .rainbow-slider .ui-slider-pip:nth-of-type(odd) {
+    top: auto;
+    bottom: 32px; }
+                    
+    .rainbow-slider .ui-slider-pip:nth-of-type(odd) .ui-slider-line {
+      top: 21px; }
+
+      ::-ms-tooltip {
+    display: none;
+}
+
+
+/***/
+
+    slider {
+        display:     block;
+        position:    relative;
+        height:      30px;
+        
+    }
+    slider span.bar {
+        height:     50%;
+        z-index:    0;
+ 
+        left:       0;
+        top:        25%;
+        cursor:     pointer;
+    }
+    slider span.bar.selection, slider span.bar.unselected {
+    }
+    slider span.bar.selection {
+        background: #0a0;
+        opacity:    0.5;
+    }
+    slider span.bar.unselected {
+        width:      auto;
+        background: #a00;
+        opacity:    0.5;
+    }
+    slider span.pointer {
+      top: -9px;
+    z-index: 2;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-color: #6B6B6B       ;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+        border: 2px solid white;
+    }
+    slider span.pointer:after {
+    position: absolute;
+     top: 6px;
+    left: 6px;
+    width: 4px;
+    height: 4px;
+    background: #ffffff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    content: '';
+}
+    slider span.pointer:hover {
+
+    }
+    slider span.pointer.active { background-color: #2C3E50
+    }
+    slider span.bubble {
+
+        font-size:   0.7em;
+        line-height: 1.4em;
+        font-family: sans-serif;
+        text-align:  center;
+        text-shadow: none;
+        top:         -1.3em;
+        cursor:      pointer;
+    }
+    slider span.bubble.selection, slider span.bubble.limit {
+        top: 25%;
+    }
+    slider span.bubble.selection {
+    }
+    slider span.bubble.limit {
+    }
+    slider span.bubble.low, slider span.bubble.high {
+        top: -18px;
+            display: none!important;
+    }
+    
+   
+    #slider-container {
+        -webkit-touch-callout: none;
+        -webkit-user-select:   none;
+        -khtml-user-select:    none;
+        -moz-user-select:      -moz-none;
+        -ms-user-select:       none;
+        user-select:           none;
+    }
+
+    slider span.bar.unselected {
+  width: 0;
+  z-index: 1;
+  background: #f5f5f5;
+}
+slider>input {
+  max-width:100%;
+}
+
+
+ .ui-slider-line-pip {
+         background: #999;
+    width: 1px;
+    height: 5px;
+    position: absolute;
+    left: 50%;
+    top: -7px;
+}
+ .ui-slider-line {
+ 
+    width: 1px;
+    height: 3px;
+    /*position: absolute;*/
+    left: 50%;
+}
+
+.ui-slider-pip {
+       /* top: 0%!important; */
+    /* width: 2em; */
+    /* height: 1em; */
+    /* line-height: 1em; */
+        bottom: 0px!important   ;
+    position: absolute;
+    font-size: .5em;
+    /* color: #999; */
+    /* overflow: visible; */
+    /* text-align: center; */
+    /* top: 20px; */
+    /* left: 20px; */
+    margin-left: -0.5em;
+    /* cursor: pointer; */
+}
+
+ ::-ms-tooltip {
+        display: none;
+    }
+
+/******/
+
+ 
+    

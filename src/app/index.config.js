@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, $httpProvider, toastr) {
+  function config($logProvider, $httpProvider, toastr,  $locationProvider,$validationProvider) {
    delete $httpProvider.defaults.headers.common["X-Requested-With"];
 
     // Enable log
