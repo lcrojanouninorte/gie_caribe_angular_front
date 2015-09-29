@@ -6,13 +6,13 @@
         .controller('ResultsController', ResultsController);
 
     /** @ngInject */
-    function ResultsController(auth, user, $scope, $cookies, $cookieStore, $timeout, $location, $state) {
+    function ResultsController(auth, instrument, $scope, $cookies, $cookieStore, $timeout, $location, $state) {
         var vm = this;
 /*******Declaracion de vvariables************/
         $scope.results = {};
         vm.title = "Resultados:"
 /******Iniciacilizacion*********************/
-        user.getAllAnswers().then(function(data) {
+        instrument.getAllAnswers("icai").then(function(data) {
 
             //$scope.answers = data;
             if (!$.isEmptyObject(data) && data !== null) {

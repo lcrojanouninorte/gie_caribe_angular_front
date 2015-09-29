@@ -45,16 +45,14 @@
             }
 
             $scope.ingresar = function(form) {
-
-
-clear();
+                clear();
                 $scope.user.user.password_confirmation = $scope.user.user.password;
                 $scope.session.session.email = $scope.user.user.email;
                 $scope.session.session.password = $scope.user.user.password;
                 auth.login($scope.session).then(function(data) {
                     if (data != null) {
                         $scope.user_id = data;
-                        $state.go('caracterizacion');
+                        $state.go('icai');
                     } else {
 
                         toaster.pop('info', "Información:", "Usuario no registrado, o contraseña invalida");
@@ -77,7 +75,7 @@ clear();
                 $scope.session.session.password = $scope.user.user.password;
                 auth.singup($scope.user).then(function(data) {
                     if (data != null) {
-                        $state.go('caracterizacion');
+                        $state.go('icai');
                     } else {
 
                         toaster.pop('info', "Información:", "Usuario ya existe");

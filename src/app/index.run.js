@@ -13,7 +13,7 @@ $anchorScroll.yOffset = 50;
     //Redirect to login if route requires auth and you're not logged in
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
 
-           var isLogin = toState.name === "login";
+          var isLogin = toState.name === "login";
 	        if(isLogin){
 	           return; // no need to redirect 
 	        }

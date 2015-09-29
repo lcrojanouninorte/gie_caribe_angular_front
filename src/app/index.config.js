@@ -6,7 +6,8 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, $httpProvider, toastr,  $locationProvider,$validationProvider) {
+  function config($logProvider, $httpProvider, toastr,  $locationProvider,$validationProvider, RestangularProvider) {
+    RestangularProvider.setBaseUrl('https://surveyapi.herokuapp.com/');
    delete $httpProvider.defaults.headers.common["X-Requested-With"];
 
     // Enable log

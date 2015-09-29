@@ -500,6 +500,9 @@ slider>input {
     /* cursor: pointer; */
 }
 
+   .pips {
+        margin-top: 25px;
+   }
  ::-ms-tooltip {
         display: none;
     }

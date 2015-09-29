@@ -1,0 +1,143 @@
+<div class="container-fluid ">
+    <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 1400px; height: 200px;">
+        <!-- Slides Container -->
+        <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 1400px; height: 200px;">
+            <div><img u="image" src="assets/images/image1.jpg" /></div>
+            <div><img u="image" src="assets/images/image2.jpg" /></div>
+            <div><img u="image" src="assets/images/image3.jpg" /></div>
+        </div>
+    </div>
+    <div class="row" style="margin-top:30px" id="survey">
+        <a name="survey" href></a>
+        <div class="col-md-10 col-md-offset-1 ">
+            <p>Responda las siguientes preguntas. Puede guardar su progreso haciendo clic en guardar.</p>
+        </div>
+    </div>
+    <!--
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="progress  progress-striped active">
+                <div class="progress-bar progress-bar-info" style="width: {{properties.progress}}%;">{{properties.progress}}%</div>
+            </div>
+        </div> 
+    </div>
+    -->
+    <div class="jumbotron" ng-show="finished==true">
+        <div ng-repeat="session in sessions">
+        </div>
+        <div class="container">
+            <div class="col-md-offset-2 col-md-8">
+                <div class="alert alert-success" role="alert">
+                    <h4><span class="glyphicon glyphicon-ok"></span> Felicitaciones! Usted a Finalizado Satisfactoriamente, Gracias por su tiempo.</h4></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 ">
+            <div class="panel panel-primary panel-opacity">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3 class="panel-title">{{imiCtrl.panelTitle}}</h3>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="btn-group" role="group" aria-label="..." style="float:right">
+                                <button type="button" class="btn btn-xs  btn-primary" ng-click="imiCtrl.changePage(-1)">
+                                    <div class="glyphicon glyphicon-chevron-left"></div> Anterior
+                                </button>
+                                <button type="button" class="btn btn-xs  btn-primary" ng-click="imiCtrl.changePage(1)">
+                                    Siguiente
+                                    <div class="glyphicon glyphicon-chevron-right"></div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form name="characterizationForm" class="form-horizontal" role="form" novalidate>
+                        <p>Bienvenido {{get_user_mail()}} </p>
+                        <tabset class="tabs-left col-sm-12">
+                            <tab class="col-md-12" ng-repeat="page in imiCtrl.pages" active="page.active" ng-click="imiCtrl.setTitle(sessions[page.key].title)">
+                                <tab-heading>{{sessions[page.key].title}}
+                                    <!--<span ng-show="sessions[page.key].unAnswered<=0" class="label label-success "><p class="glyphicon glyphicon-ok"></p></span>
+                                 <span ng-show="sessions[page.key].showUnaswered>0" class="badge">{{sessions[page.key].unAnswered}}</span>--></tab-heading>
+                                <fieldset>
+                                    <legend>
+                                        <save-btn ng-click='save()'></save-btn>
+                                    </legend>
+                                    <ng-include src="'app/InstrumentoIMI/questions/'+sessions[page.key].url_name+'.html'" class="my-fade-animation"></ng-include>
+                                    <div class="col-md-offset-3 col-md-6 text-center" ng-show="properties.progress>=100" ng-click="finish()">
+                                        <div class="btn-group text-center" role="group">
+                                            <button type="button" class="btn btn-md  btn-success">
+                                                <div class="glyphicon glyphicon-send"></div> Finalizar
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-offset-3 col-md-6 text-center">
+                                        <br>
+                                        <br>
+                                        <div class="btn-group text-center" role="group">
+                                            <button type="button" class="btn btn-xs  btn-primary" ng-click="imiCtrl.changePage(-1)">
+                                                <div class="glyphicon glyphicon-chevron-left"></div> Anterior
+                                            </button>
+                                            <button type="button" class="btn btn-xs  btn-primary" ng-click="imiCtrl.changePage(1)" ng-show="!isLastPage()">
+                                                Siguiente
+                                                <div class="glyphicon glyphicon-chevron-right"></div>
+                                            </button>
+                                            <button type="button" class="btn btn-xs  btn-success" ng-click="swal('Gracias!', 'Guardado correctamente');imiCtrl.changePage(0)" ng-show="isLastPage()">
+                                                Finalizar
+                                                <div class="glyphicon glyphicon-check"></div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <!--        <div class="row" style="margin-top:10px">
+                                    <h4>Active pane:</h4>
+                                    <pre>{{imiCtrl.tabActive()}}</pre>
+                                </div>-->
+                            </tab>
+                        </tabset>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 ">
+                                <!-- Default panel contents -->
+                                <div>Comuníquese con cualquiera de nuestros consultores a las siguientes líneas telefónicas: 301 485 1346 - 301 485 1536 - 300 265 8510 - 301 485 1421 - 301 485 1567 - 301 484 9940.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--    <div class="question_bg">
+            <img src="assets/images/questions_bg.png" alt="bg">
+        </div>-->
+    </div>
+</div>
+<script>
+jQuery(document).ready(function($) {
+    var options = {};
+    var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+
+    //responsive code begin
+    //you can remove responsive code if you don't want the slider scales
+    //while window resizes
+    function ScaleSlider() {
+        var parentWidth = $('#slider1_container').parent().width();
+        if (parentWidth) {
+            jssor_slider1.$ScaleWidth(parentWidth);
+        } else
+            window.setTimeout(ScaleSlider, 30);
+    }
+    //Scale slider after document ready
+    ScaleSlider();
+
+    //Scale slider while window load/resize/orientationchange.
+    $(window).bind("load", ScaleSlider);
+    $(window).bind("resize", ScaleSlider);
+    $(window).bind("orientationchange", ScaleSlider);
+    //responsive code end
+});
+</script>

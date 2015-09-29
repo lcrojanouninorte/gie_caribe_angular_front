@@ -1,0 +1,47 @@
+<!-- Text input-->
+<div class="form-group">
+    <label class="col-md-4 control-label" for="p1">1. Número de Identificación Tributaria</label>
+    <div class="col-md-4">
+        <input name="p1" class="form-control input-xs" type="text" ng-model="answers.s1.p1" required>
+    </div>
+</div>
+<!-- Text input-->
+<div class="form-group">
+    <label class="col-md-4 control-label" for="anoFundacion">2. Año de fundación de la empresa (Año de inicio de actividades productivas)</label>
+    <div class="col-md-4">
+        <p class="input-group">
+            <input type="text" class="form-control input-xs" ng-model="answers.s1.p2" datepicker-popup="dd-MM-yyyy" is-open="icaiCtrl.status.opened" max-date="'icaiCtrl.today'" ng-required="true" close-text="Close" />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default btn-xs" ng-click="icaiCtrl.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </p>
+    </div>
+</div>
+<!-- Multiple Radios (inline) -->
+<div class="form-group">
+    <label class="col-md-4 control-label" for="familiar_chk">3. ¿Es una empresa familiar?</label>
+    <div class="col-md-4">
+        <label class="radio-inline" for="familiar_chk-0">
+            <input name="familiar_chk" id="familiar_chk-0" type="radio" checked="checked" value="1" ng-model="answers.s1.p3"> Si
+        </label>
+        <label class="radio-inline" for="familiar_chk-1">
+            <input name="familiar_chk" id="familiar_chk-1" type="radio" value="0" ng-model="answers.s1.p3"> No
+        </label>
+    </div>
+</div>
+<!-- Select Basic -->
+<div class="form-group">
+    <label class="col-md-4 control-label" for="nivelFormacion">4. Nivel de formación del gerente</label>
+    <div class="col-md-4">
+        <select name="nivelFormacion" class="form-control input-xs" id="nivelFormacion" ng-model="answers.s1.p4">
+            <option value="Básica primaria">Básica primaria</option>
+            <option value="Básica secundaria">Básica secundaria</option>
+            <option value="Técnica profesional">Técnica profesional</option>
+            <option value="Tecnológica">Tecnológica</option>
+            <option value="Profesional Universitario">Profesional Universitario</option>
+            <option value="Especialización">Especialización</option>
+            <option value="Maestría">Maestría</option>
+            <option value="Doctorado">Doctorado</option>
+        </select>
+    </div>
+</div>
