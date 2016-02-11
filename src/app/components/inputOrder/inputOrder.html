@@ -1,0 +1,16 @@
+<!-- Text input-->
+<div class="form-group">
+    <div class="col-md-12">
+        <div class="btn-group">
+            <label ng-click="vm.update_result(item.text, item.value, $index)"class="btn btn-info btn-sm hvr-grow-shadow" ng-model="vm.items[$index].value" btn-checkbox ng-repeat="item in vm.items">{{item.text}}  <span class="badge" ng-show="vm.getOrder(item.text)>0">{{vm.getOrder(item.text)}}</span></label>
+        </div>
+      
+        <span class="help-block h4" style="color:green">
+        {{vm.currentMessage}}
+        <h4 ng-show="vm.items.finished">
+        <i class="mdi-action-done-all"></i>
+        </h4>
+        </span>
+    </div>
+    
+</div>

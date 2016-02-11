@@ -1,0 +1,19 @@
+#input-scala .btn-warning:hover:not(.btn-link):not(.btn-flat) {
+    background-color: #ff5722!important;
+        color: white!important;
+}
+
+#input-scala .btn-warning.active:not(.btn-link):not(.btn-flat) {
+    background-color: #000000!important;
+     color: white!important;
+}
+
+#input-scala .btn-warning:not(.btn-link):not(.btn-flat) {
+    background-color: #FFDB66!important;
+    color: black;
+}
+
+#input-scala  .btn-warning {
+    background-color: #f39c12;
+    border-color: #D7880B!important;
+}

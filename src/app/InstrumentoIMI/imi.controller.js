@@ -6,7 +6,25 @@
         .controller('ImiController', ImiController);
 
     /** @ngInject */
-    function ImiController(auth, instrument, $scope, $cookies, $cookieStore, $timeout, $stateParams) {
+    function ImiController(auth, instrument, $scope, $cookies, $timeout, $stateParams) {
+
+
+          $scope.chart_options = {
+             responsive: true,
+             scaleBeginAtZero: true,
+             scaleIntegersOnly: true,
+             scaleShowLabels : true,
+
+            scaleOverride: true,
+            scaleSteps: 7,
+            scaleStepWidth: 1,
+            scaleStartValue: 0
+          };
+          $scope.labels =["Estrategia", "Procesos", "Organización", "Conexiones", "Aprendizaje"];
+          $scope.dimensiones = [
+            [7, 7, 7, 7, 7]
+          ];
+
         var vm = this;
         $scope.user = auth.getUser();
         $scope.finished = false;
@@ -21,37 +39,14 @@
         $scope.properties = {
             nRespuestas: 0,
             progress: 0,
-            nPreguntas: 89,
+            nPreguntas: 20,
             total: 0,
             index: 0,
-            s11:{check:0}
         };
         $scope.msgs = [""];
 
   
-        //Mensajes para pregunta answers.s3.p5
-        $scope.order = {};
-        $scope.order.checkResponse = [];
-        $scope.order.setOrdersRes = function(ind) {
-            var check = $scope.order.check[ind];
-            if (check.elem) {
-                $scope.properties.index -= 1;
-                var index = $.inArray(check.text, $scope.order.checkResponse);
-                $scope.order.checkResponse.splice(index, 1);
 
-            } else {
-                $scope.properties.index += 1;
-                $scope.order.checkResponse.push(check.text);
-            }
-            $scope.order.message = $scope.msgs[$scope.properties.index];
-            if ($scope.properties.index > 0) {
-                if ($scope.properties.index === 3) {
-                    $scope.answers.s3.p5 = $scope.order.checkResponse[0] + ", " + $scope.order.checkResponse[1] + ", " + $scope.order.checkResponse[2] + ", ";
-                    $scope.order.message = "Su respuesta es: " + $scope.answers.s3.p5;
-                }
-
-            }
-        };
         vm.tabActive = function() {
             return vm.pages.filter(function(pane) {
                 return pane.active;
@@ -62,16 +57,6 @@
         $scope.get_user_mail = function() {
             return $cookies.email;
         };
-
-        function compare(a, b) {
-            if (a.order < b.order) {
-                return -1;
-            }
-            if (a.order > b.order) {
-                return 1;
-            }
-            return 0;
-        }
 
 
         vm.pages = [{
@@ -103,42 +88,11 @@
 
         };
 
-        vm.changePage = function(page) {
-            //obtener tab activ y el indice
-            var active = vm.tabActive();
-            var index = $.inArray(active, vm.pages);
-            user.setAnswers($scope.user_id, $scope.answers);
-
-
-            if (index === 0 && page === -1) {
-                vm.page = vm.pages.length - 1;
-                vm.pages[vm.page].active = true;
-                vm.panelTitle = $scope.sessions[vm.pages[vm.page].key].title;
-                return true;
-            }
-
-            if (index === (vm.pages.length - 1) && page === 1) {
-                vm.page = 0;
-                vm.pages[vm.page].active = true;
-                vm.panelTitle = $scope.sessions[vm.pages[vm.page].key].title;
-                return true;
-            }
-
-            vm.page = index + page;
-            vm.pages[vm.page].active = true;
-            vm.panelTitle = $scope.sessions[vm.pages[vm.page].key].title;
-
-            //actualizar en db
-
-              
-              $timeout(function(){$scope.refreshSlider();}, 100); 
-     
-        };
 
 
 
 
-        function activate() {
+        function activate() {/*
             var props_watch = $scope.$watch(function() {
                 return $scope.answers;
             }, function(newValues, oldValues, scope) {
@@ -165,7 +119,7 @@
                     props_watch();
                 }
             }, true);
-
+*/
        
 
         }
@@ -187,7 +141,7 @@
         $scope.finish = function () {
             $scope.finished = true;
 
-             user.setAnswers($scope.user_id, $scope.answers);
+             instrument.setAnswers("imi",$scope.user_id, $scope.answers);
         }
 
 
@@ -203,6 +157,34 @@
             //$scope.answers = data;
             if (!$.isEmptyObject(data) && data !== null && typeof(data.s1) != "undefined") {
                 $scope.answers = data;
+                $scope.dimensiones = [
+                    [
+                    7*(($scope.answers.s1.p1 + $scope.answers.s1.p5 + $scope.answers.s1.p14 + $scope.answers.s1.p19)/4)/100,
+                    7*(($scope.answers.s1.p2 + $scope.answers.s1.p10 + $scope.answers.s1.p15 + $scope.answers.s1.p18)/4)/100,
+                    7*(($scope.answers.s1.p4 + $scope.answers.s1.p7 + $scope.answers.s1.p11 + $scope.answers.s1.p16)/4)/100,
+                    7*(($scope.answers.s1.p3 + $scope.answers.s1.p6 + $scope.answers.s1.p8 + $scope.answers.s1.p12)/4)/100,
+                    7*(($scope.answers.s1.p9 + $scope.answers.s1.p13 + $scope.answers.s1.p17 + $scope.answers.s1.p20)/4)/100
+                    ] 
+                ];
+
+             var props_watch = $scope.$watch(function() {
+                return $scope.answers;
+            }, function(newValues, oldValues, scope) {
+                angular.forEach(newValues, function(snv, snk) {
+                $scope.dimensiones = [
+                    [
+                    7*(($scope.answers.s1.p1 + $scope.answers.s1.p5 + $scope.answers.s1.p14 + $scope.answers.s1.p19)/4)/100,
+                    7*(($scope.answers.s1.p2 + $scope.answers.s1.p10 + $scope.answers.s1.p15 + $scope.answers.s1.p18)/4)/100,
+                    7*(($scope.answers.s1.p4 + $scope.answers.s1.p7 + $scope.answers.s1.p11 + $scope.answers.s1.p16)/4)/100,
+                    7*(($scope.answers.s1.p3 + $scope.answers.s1.p6 + $scope.answers.s1.p8 + $scope.answers.s1.p12)/4)/100,
+                    7*(($scope.answers.s1.p9 + $scope.answers.s1.p13 + $scope.answers.s1.p17 + $scope.answers.s1.p20)/4)/100
+                    ] 
+                ];
+            })}, true);
+
+
+
+
 
             }else{
                 //props_watch();

@@ -6,16 +6,17 @@
         .controller('ResultsController', ResultsController);
 
     /** @ngInject */
-    function ResultsController(auth, instrument, $scope, $cookies, $cookieStore, $timeout, $location, $state) {
+    function ResultsController(instrument, $scope, $cookies, $cookieStore, $timeout, $location, $state, $stateParams) {
         var vm = this;
 /*******Declaracion de vvariables************/
         $scope.results = {};
         vm.title = "Resultados:"
 /******Iniciacilizacion*********************/
-        instrument.getAllAnswers("icai").then(function(data) {
+        vm.type = $stateParams.type;
+        instrument.getAllAnswers(vm.type).then(function(data) {
 
             //$scope.answers = data;
-            if (!$.isEmptyObject(data) && data !== null) {
+            if (!$.isEmptyObject(data) && data != null) {
                 $scope.results = data;
             }else{
                 //props_watch();
@@ -29,8 +30,16 @@
         init();
 /*************Funciones************************/
         $scope.showResult = function(id){
-            
-            $state.go('detalle', { id: id }); 
+            if(vm.type == "imi"){
+                 $state.go('detalle2', { id: id }); 
+            }
+            if(vm.type == "icai"){
+                 $state.go('detalle', { id: id }); 
+            }
+            if(vm.type == "acap"){
+                 $state.go('detalle3', { id: id }); 
+            }
+           
 
         }
         

@@ -7,9 +7,9 @@
    
 
     /** @ngInject */
-
-    function IcaiController(auth, instrument, $scope, $cookies, $cookieStore, $timeout, $stateParams) {
+    function IcaiController(auth, instrument, $scope, $cookies, $timeout, $stateParams, $log) {
         var vm = this;
+
         $scope.user = auth.getUser();
         $scope.finished = false;
         vm.panelTitle = "";
@@ -280,12 +280,12 @@
                 angular.forEach(newValues, function(snv, snk) {
                     $scope.sessions[snk].answered = 0;
                     angular.forEach(snv, function(pnv, pnk) {
-                        if (pnv !== "" && typeof pnv !== "undefined") {
+                        if (pnv != "" && typeof pnv != "undefined") {
                             $scope.properties.nRespuestas += 1;
                             $scope.sessions[snk].answered += 1;
                         }
                     });
-                    if ($scope.sessions[snk].questions === $scope.sessions[snk].answered) {
+                    if ($scope.sessions[snk].questions == $scope.sessions[snk].answered) {
                         $scope.sessions[snk].state = 1;
                     } else {
                         $scope.sessions[snk].state = 0;
@@ -300,30 +300,30 @@
             }, true);
 
        
-
+$log.debug("salio de a icai active", $cookies);
         }
 
         $scope.isLastPage = function(){
             var active = vm.tabActive();
             var index = $.inArray(active, vm.pages);
-            return index == (Object.keys(vm.pages).length-1)
-        }
+            return index === (Object.keys(vm.pages).length-1);
+        };
 
         $scope.swal = function( title, msg, type){
 
             swal(title, msg, type);
-        }
+        };
         $scope.input_field = "s";
 
         $scope.refreshSlider = function () {
             $scope.$broadcast('refreshSlider');
-        }
+        };
 
         $scope.finish = function () {
             $scope.finished = true;
 
              instrument.setAnswers("icai",$scope.user_id, $scope.answers);
-        }
+        };
 
 
 
@@ -336,20 +336,23 @@
         instrument.getAnswers("icai", $scope.user_id).then(function(data) {
 
             //$scope.answers = data;
-            if (!$.isEmptyObject(data) && data !== null && typeof(data.s1) != "undefined") {
+            if (!$.isEmptyObject(data) && data != null && typeof(data.s1) != "undefined") {
                 $scope.answers = data;
+                 $log.debug("despues de obtener answers  ", $cookies);
 
             }else{
                 //props_watch();
             }
 
             console.log("recibido en chrarac controller: " + $scope.answers);
+            $log.debug("antes de active  ", $cookies);
+
             activate();
 
 
         });
 
-
+$log.debug("fin de icai ", $cookies);
 
     }
 })();

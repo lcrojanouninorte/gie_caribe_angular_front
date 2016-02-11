@@ -41,15 +41,7 @@
                             <h3 class="panel-title">{{imiCtrl.panelTitle}}</h3>
                         </div>
                         <div class="col-md-8">
-                            <div class="btn-group" role="group" aria-label="..." style="float:right">
-                                <button type="button" class="btn btn-xs  btn-primary" ng-click="imiCtrl.changePage(-1)">
-                                    <div class="glyphicon glyphicon-chevron-left"></div> Anterior
-                                </button>
-                                <button type="button" class="btn btn-xs  btn-primary" ng-click="imiCtrl.changePage(1)">
-                                    Siguiente
-                                    <div class="glyphicon glyphicon-chevron-right"></div>
-                                </button>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -59,11 +51,17 @@
                         <tabset class="tabs-left col-sm-12">
                             <tab class="col-md-12" ng-repeat="page in imiCtrl.pages" active="page.active" ng-click="imiCtrl.setTitle(sessions[page.key].title)">
                                 <tab-heading>{{sessions[page.key].title}}
+                <div >
+                    <canvas id="radar" width="500" height="500" class="chart chart-radar"
+                      chart-data="dimensiones" chart-labels="labels" chart-options="chart_options">
+                    </canvas> 
+
+                </div>
                                     <!--<span ng-show="sessions[page.key].unAnswered<=0" class="label label-success "><p class="glyphicon glyphicon-ok"></p></span>
                                  <span ng-show="sessions[page.key].showUnaswered>0" class="badge">{{sessions[page.key].unAnswered}}</span>--></tab-heading>
                                 <fieldset>
                                     <legend>
-                                        <save-btn ng-click='save()'></save-btn>
+                                        <div save-btn userid="user_id" type="'imi'" answers="answers" ></div>
                                     </legend>
                                     <ng-include src="'app/InstrumentoIMI/questions/'+sessions[page.key].url_name+'.html'" class="my-fade-animation"></ng-include>
                                     <div class="col-md-offset-3 col-md-6 text-center" ng-show="properties.progress>=100" ng-click="finish()">
@@ -77,30 +75,33 @@
                                         <br>
                                         <br>
                                         <div class="btn-group text-center" role="group">
-                                            <button type="button" class="btn btn-xs  btn-primary" ng-click="imiCtrl.changePage(-1)">
-                                                <div class="glyphicon glyphicon-chevron-left"></div> Anterior
-                                            </button>
+ 
                                             <button type="button" class="btn btn-xs  btn-primary" ng-click="imiCtrl.changePage(1)" ng-show="!isLastPage()">
                                                 Siguiente
                                                 <div class="glyphicon glyphicon-chevron-right"></div>
                                             </button>
-                                            <button type="button" class="btn btn-xs  btn-success" ng-click="swal('Gracias!', 'Guardado correctamente');imiCtrl.changePage(0)" ng-show="isLastPage()">
+                                            <button type="button" class="btn btn-xs  btn-success" ng-click="icaiCtrl.changePage(0)" ng-show="isLastPage()" modal template="myModalContent.html">
                                                 Finalizar
                                                 <div class="glyphicon glyphicon-check"></div>
                                             </button>
                                         </div>
+
                                     </div>
                                 </fieldset>
                                 <!--        <div class="row" style="margin-top:10px">
                                     <h4>Active pane:</h4>
                                     <pre>{{imiCtrl.tabActive()}}</pre>
                                 </div>-->
+
                             </tab>
                         </tabset>
                     </form>
                 </div>
+
                 <div class="panel-footer">
+ 
                     <div class="container">
+
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12 ">
                                 <!-- Default panel contents -->
@@ -116,6 +117,43 @@
         </div>-->
     </div>
 </div>
+<script type="text/ng-template" id="myModalContent.html">
+ 
+    <div class="modal-header">
+        <h3 class="modal-title">Finalizado Correctamente!</h3>
+    </div> <div class="col-md-12">
+    <div class="modal-body"> 
+
+    <p>Si conoce a otras empresas que puedan estar interesadas en estre proyecto, por favor indique los datos solicitados a continuación:</p>
+       
+           
+            <br>
+            <div class="row" ng-repeat="referrer in vm.referrers">
+                <label class="col-md-3">Nombre:
+                    <input type="text" value="referrer.nombre" ng-model="referrer.nombre" >
+                </label>
+                <label class="col-md-3">Empresa:
+                    <input type="text" value="referrer.empresa" ng-model="referrer.empresa">
+                </label class="col-md-3">
+                <label class="col-md-3">Email:
+                    <input type="text" value="referrer.email" ng-model="referrer.mail">
+                </label>
+                <label class="col-md-3">Telefono:
+                    <input type="text" value="referrer.email" ng-model="referrer.tel">
+                </label>
+            </div>
+            <br>
+            <button class="btn btn-sm btn-info" ng-click="vm.add_referrer()">Añadir otra Empresa</button>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">Enviar</button>
+        <button class="btn btn-success" type="button" ng-click="cancel()">Finalizar</button>
+    </div>
+ 
+
+    </script>
 <script>
 jQuery(document).ready(function($) {
     var options = {};

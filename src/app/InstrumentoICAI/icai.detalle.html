@@ -44,15 +44,16 @@
                 </div>
                 <div class="panel-body">
                     <form name="characterizationForm" class="form-horizontal" role="form" novalidate>
-                        
+                       
                         <tabset class="tabs-left col-sm-12">
                             <tab class="col-md-12" ng-repeat="page in icaiCtrl.pages" active="page.active" ng-click="icaiCtrl.setTitle(sessions[page.key].title)">
                                 <tab-heading>{{sessions[page.key].title}}
                                     <!--<span ng-show="sessions[page.key].unAnswered<=0" class="label label-success "><p class="glyphicon glyphicon-ok"></p></span>
                                  <span ng-show="sessions[page.key].showUnaswered>0" class="badge">{{sessions[page.key].unAnswered}}</span>--></tab-heading>
                                 <fieldset>
-                                    <legend>
-                                      
+                                     <legend>
+                                        <!--<div save-btn userid="user_id" type="'icai'" answers="answers" ></div>-->
+                                        
                                     </legend>
                                     <ng-include src="'app/InstrumentoICAI/fieldsets/'+sessions[page.key].title+'.html'" class="my-fade-animation"></ng-include>
 

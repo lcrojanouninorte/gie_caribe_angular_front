@@ -6,43 +6,20 @@
         .directive('saveBtn', saveBtn)
         .directive('navigationBtns', navigationBtns)
         .directive('watchChanges', watchChanges)
-    .directive('orderButton', orderButton);
+        .directive('orderButton', orderButton);
 
     /** @ngInject */
-    function saveBtn(instrument, $timeout) {
+    function saveBtn() {
         var directive = {
-            restrict: 'E',
+            restrict: 'A',
             templateUrl: "app/InstrumentoICAI/partials/btn-save.tpl.html",
-            scope: false,
-            link: function(scope, elem, attrs) {
-                scope.saved = false;
-                scope.text = "Guardar";
-                scope.class = "glyphicon glyphicon-floppy-disk";
-                scope.save = function() {
-                    if (!scope.saved) {
-                        //correr funcion para guardar
-                        if (instrument.setAnswers("icai",scope.user_id, scope.answers)) {
-                            scope.class = "glyphicon glyphicon-floppy-saved ";
-                            scope.text = "Guardado!";
-                            scope.saved = true;
-                        } else {
-                            scope.class = "glyphicon glyphicon-floppy-disk";
-                            scope.text = "Error al Guardar, intente nuevamente";
-                            scope.saved = false;
-                        };
-                        $timeout(function() {
-                            scope.text = "Guardar";
-                            scope.class = "glyphicon glyphicon-floppy-disk";
-                            scope.saved = false;
-                        }, 2000);
-
-                    }
-                }
-                scope.unsave = function() {
-
-                }
-
-
+            controller: saveBtnController,
+            controllerAs: 'vm',
+            bindToController: true,
+            scope: {
+                type:"=",
+                answers:"=",
+                userid:"="
             }
 
         };
@@ -51,6 +28,39 @@
 
 
     }
+    /** @ngInject */
+
+     function saveBtnController($timeout, instrument) {
+        var vm = this;
+         vm.saved = false;
+                vm.text = "Guardar";
+                vm.class = "glyphicon glyphicon-floppy-disk";
+                vm.save = function() {
+                    if (!vm.saved) {
+                        //correr funcion para guardar
+                        if (instrument.setAnswers(vm.type,vm.userid, vm.answers)) {
+                            vm.class = "glyphicon glyphicon-floppy-saved ";
+                            vm.text = "Guardado!";
+                            vm.saved = true;
+                        } else {
+                            vm.class = "glyphicon glyphicon-floppy-disk";
+                            vm.text = "Error al Guardar, intente nuevamente";
+                            vm.saved = false;
+                        };
+                        $timeout(function() {
+                            vm.text = "Guardar";
+                            vm.class = "glyphicon glyphicon-floppy-disk";
+                            vm.saved = false;
+                        }, 2000);
+
+                    }
+                }
+                vm.unsave = function() {
+
+                }
+
+     }
+   /** @ngInject */
 
     function navigationBtns() {
         var directive = {
@@ -73,6 +83,7 @@
 
 
     }
+   /** @ngInject */
 
     function watchChanges() {
         var directive = {
@@ -89,6 +100,7 @@
         return directive;
 
     }
+   /** @ngInject */
 
     function orderButton() {
         var directive = {

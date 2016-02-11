@@ -83,6 +83,22 @@ body {
 .layout-top-nav .main-footer {
   margin-left: 0;
 }
+
+.delay1 {
+ 
+    -webkit-animation-delay: 1ms;
+     
+}
+.delay3 {
+ 
+    -webkit-animation-delay: 300ms;
+     
+}
+.delay5 {
+ 
+    -webkit-animation-delay: 500ms;
+     
+}
 @media (max-width: 767px) {
   .content-wrapper,
   .right-side,
@@ -2004,6 +2020,7 @@ a:focus {
 .modal .panel-body {
   color: #444;
 }
+
 /*
  * Component: Info Box
  * -------------------
@@ -4336,8 +4353,9 @@ table.text-center th {
   background-color: #ca195a !important;
 }
 [class^="bg-"].disabled {
-  opacity: 0.65;
-  filter: alpha(opacity=65);
+  opacity: 0.9;
+  filter: alpha(opacity=9);
+   
 }
 .text-red {
   color: #dd4b39 !important;

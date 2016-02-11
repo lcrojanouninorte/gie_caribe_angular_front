@@ -63,24 +63,41 @@
 
     }
 
-    function ModalAttrInstanceCtrl($scope, $modalInstance, Restangular, user_id) {
-        var vm = this;
-        vm.referrers = [{user_id: user_id, nombre: "", empresa: "",mail: ""}];
-        vm.add_referrer =function(){
-            vm.referrers.push({user_id: user_id,nombre: "", empresa: "", mail: ""});
-        }
-
-        $scope.ok = function() {
-            console.log("referrer",vm.referrers)
-            Restangular.all('referrers').post({referrers:vm.referrers});
-            
-            $modalInstance.close();
-        };
-
-        $scope.cancel = function() {
-            $modalInstance.dismiss('cancel');
-        };
+    function ModalAttrInstanceCtrl($scope, $modalInstance, Restangular, user_id, $state) {
+    var vm = this;
+    vm.referrers = [{
+        user_id: user_id,
+        nombre: "",
+        empresa: "",
+        mail: "",
+        tel: ""
+    }];
+    vm.add_referrer = function() {
+        vm.referrers.push({
+            user_id: user_id,
+            nombre: "",
+            empresa: "",
+            mail: "",
+            tel: ""
+        });
     }
+
+    $scope.ok = function() {
+        console.log("referrer", vm.referrers)
+        Restangular.all('referrers').post({
+            referrers: vm.referrers
+        });
+        $state.go("instrumentos");
+        $modalInstance.close();
+        
+    };
+
+    $scope.cancel = function() {
+        $modalInstance.dismiss('cancel');
+        $state.go("instrumentos");
+    };
+}
+
 
 
 

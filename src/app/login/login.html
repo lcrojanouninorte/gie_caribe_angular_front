@@ -13,8 +13,8 @@
                             
                     </div>
                     <div class="row">
-                        <div class="col-sm-6  col-sm-offset-3 form-box">
-                            <div class="form-top">
+                        <div class="col-sm-6  col-sm-offset-3 form-box ">
+                            <div class="form-top sample shadow-z-2">
                                 <div class="form-top-left text-center">
                                     <h3>Instrumento de caracterización de la actividad innovadora</div>
                               
@@ -22,7 +22,7 @@
                                      <p>  <i class="glyphicon glyphicon-lock"></i> Ingrese su E-mail y contraseña para ingresar</p>
                                 </div>
                             </div>
-                            <div class="form-bottom">
+                            <div class="form-bottom sample shadow-z-2">
                                 <form class="login-form" name="Form" role="form" ng-submit="submit()">
                                     <div class="form-group">
                                         <label class="sr-only" for="form-username">E-Mail</label>
@@ -32,16 +32,20 @@
                                         <label class="sr-only" for="form-password">Contraseña</label>
                                         <input type="password" name="form-password" placeholder="Contraseña..." class="form-password form-control" id="form-password" ng-model="user.user.password"  validator="minlength=4" lenght-error-message="Minimo 4 letras o digitos"  email-success-message=" ">
                                     </div>
-                                    <button ng-disabled="!Form.$valid" class="btn btn-success" ng-click="ingresar(Form)">Ingresar</button>
-                                    <button ng-disabled="!Form.$valid" class="btn btn-info" ng-click="registrar()">Registrarse</button>
+                                    <button ng-click="ingresar(Form)" v-busy="login.isBusy" v-busy-label="Cargando..." v-pressable ng-disabled="!Form.$valid" class="btn btn-success">Ingresar</button>
+                                    <button ng-click="registrar()" v-busy="login.isBusy" v-busy-label="Cargando..." v-pressable ng-disabled="!Form.$valid" class="btn btn-info" >Registrarse</button>
+                                    
+
                                 </form>
+                                 <p class="h4 text-center"><a href="#" ng-click="passReset()"> Recuperar contraseña </a></p>  
                             </div>
                         </div>
 
                     </div>
                             <div class="account col-xs-12 text-center  ">
-             
-                <p>Olvido su <a href="#">contraseña?</a></p> 
+             <br>
+             <br>
+               
              
         </div>
                     
