@@ -1,0 +1,170 @@
+<!doctype html>
+<html ng-app="InnovationManagement">
+  <head>
+    <meta charset="utf-8">
+    <title>preguntas</title>
+    <meta name="description" content="">
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../bower_components/toastr/toastr.css" />
+    <link rel="stylesheet" href="../bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="../bower_components/angular-busy/dist/angular-busy.css" />
+    <link rel="stylesheet" href="../bower_components/angularjs-toaster/toaster.css" />
+    <link rel="stylesheet" href="../bower_components/ionicons/css/ionicons.css" />
+    <link rel="stylesheet" href="../bower_components/sweetalert2/dist/sweetalert2.css" />
+    <link rel="stylesheet" href="../bower_components/ngDialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="../bower_components/ngDialog/css/ngDialog-theme-default.css" />
+    <link rel="stylesheet" href="../bower_components/Hover/css/hover.css" />
+    <link rel="stylesheet" href="../bower_components/v-button/dist/v-button.css" />
+    <link rel="stylesheet" href="../bower_components/v-modal/dist/v-modal.css" />
+    <link rel="stylesheet" href="../bower_components/bootstrap-material-design/dist/css/material.css" />
+    <link rel="stylesheet" href="../bower_components/bootstrap-material-design/dist/css/ripples.css" />
+    <link rel="stylesheet" href="../bower_components/slick-carousel/slick/slick.css" />
+    <link rel="stylesheet" href="../bower_components/slick-carousel/slick/slick-theme.css" />
+    <link rel="stylesheet" href="../bower_components/ng-dialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="../bower_components/ng-dialog/css/ngDialog-theme-default.css" />
+    <link rel="stylesheet" href="../bower_components/angular-chart.js/dist/angular-chart.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="app/index.css">
+    <link rel="stylesheet" href="app/Instrumentos/instrumentos.css">
+    <link rel="stylesheet" href="app/login/form-elements.css">
+    <link rel="stylesheet" href="app/login/login.css">
+    <link rel="stylesheet" href="app/login/style.css">
+    <link rel="stylesheet" href="app/InstrumentosAux/InstrumentoAux1/instrument.css">
+    <link rel="stylesheet" href="app/components/inputScala/inputScala.css">
+    <link rel="stylesheet" href="app/components/malarkey/malarkey.css">
+    <link rel="stylesheet" href="app/components/navbar/navbar.css">
+    <link rel="stylesheet" href="app/components/slider/slider.css">
+    <link rel="stylesheet" href="app/components/sponsors/sponsors.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/_all-skins.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-black-light.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-black-light.min.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-black.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-black.min.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-blue-light.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-blue-light.min.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-blue.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-green-light.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-green-light.min.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-green.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-green.min.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-purple-light.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-purple-light.min.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-purple.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-purple.min.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-red-light.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-red-light.min.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-red.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-red.min.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-yellow-light.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-yellow-light.min.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-yellow.css">
+    <link rel="stylesheet" href="app/components/navbar/skins/skin-yellow.min.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+  </head>
+  <body id="instrumentos-modulo">
+
+    <!--[if lt IE 10]>
+      <p class="browsehappy">Usted esta usando un explorador <strong>muy antiguo</strong>. Por favor <a href="http://browsehappy.com/">Actualice su explorador</a> Para Mejorar su experiencia en este sitio.</p>
+    <![endif]-->
+<acme-navbar  ></acme-navbar>
+    <div ui-view></div>
+
+    <!-- build:js(src) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="../bower_components/angular-touch/angular-touch.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="../bower_components/lodash/lodash.js"></script>
+    <script src="../bower_components/restangular/dist/restangular.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../bower_components/malarkey/dist/malarkey.min.js"></script>
+    <script src="../bower_components/toastr/toastr.js"></script>
+    <script src="../bower_components/moment/moment.js"></script>
+    <script src="../bower_components/angular-validation/dist/angular-validation.js"></script>
+    <script src="../bower_components/angular-validation/dist/angular-validation-rule.js"></script>
+    <script src="../bower_components/jssor-slider/js/jssor.slider.mini.js"></script>
+    <script src="../bower_components/angular-busy/dist/angular-busy.js"></script>
+    <script src="../bower_components/angularjs-toaster/toaster.js"></script>
+    <script src="../bower_components/venturocket-angular-slider/build/angular-slider.js"></script>
+    <script src="../bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="../bower_components/angular-sweetalert2/SweetAlert.js"></script>
+    <script src="../bower_components/base-64/base64.js"></script>
+    <script src="../bower_components/ngDialog/js/ngDialog.js"></script>
+    <script src="../bower_components/v-button/dist/v-button.js"></script>
+    <script src="../bower_components/v-modal/dist/v-modal.js"></script>
+    <script src="../bower_components/bootstrap-material-design/dist/js/material.js"></script>
+    <script src="../bower_components/bootstrap-material-design/dist/js/ripples.js"></script>
+    <script src="../bower_components/slick-carousel/slick/slick.min.js"></script>
+    <script src="../bower_components/angular-slick/dist/slick.js"></script>
+    <script src="../bower_components/ng-dialog/js/ngDialog.js"></script>
+    <script src="../bower_components/angular-centered/angular-centered.js"></script>
+    <script src="../bower_components/scrollReveal.js/dist/scrollReveal.js"></script>
+    <script src="../bower_components/fox-angular-scrollReveal.js/dist/fox-angular-scrollReveal.js"></script>
+    <script src="../bower_components/Chart.js/Chart.js"></script>
+    <script src="../bower_components/angular-chart.js/dist/angular-chart.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <script src="app/components/navbar/skins/navbar.js"></script>
+    <script src="app/index.module.js"></script>
+    <script src="app/components/webDevTec/webDevTec.service.js"></script>
+    <script src="app/components/sponsors/sponsors.directive.js"></script>
+    <script src="app/components/slider/slider.directive.js"></script>
+    <script src="app/components/navbar/navbar.directive.js"></script>
+    <script src="app/components/modals/modal.controller.js"></script>
+    <script src="app/components/malarkey/malarkey.directive.js"></script>
+    <script src="app/components/instrument/instrument.service.js"></script>
+    <script src="app/components/githubContributor/githubContributor.service.js"></script>
+    <script src="app/components/inputScala/inputScala.directive.js"></script>
+    <script src="app/components/inputOrder/inputOrder.directive.js"></script>
+    <script src="app/components/ciiuv_4/ciiuv_revs.service.js"></script>
+    <script src="app/components/ciiuv_4/ciiuv.directive.js"></script>
+    <script src="app/components/auth/auth.service.js"></script>
+    <script src="app/InstrumentosAux/InstrumentoAux1/instrumentoAux1.controller.js"></script>
+    <script src="app/main/main.controller.js"></script>
+    <script src="app/results/results.controller.js"></script>
+    <script src="app/login/login.controller.js"></script>
+    <script src="app/Instrumentos/instrumentos.controller.js"></script>
+    <script src="app/Password/resetPassword.controller.js"></script>
+    <script src="app/InstrumentoIMI/imi.controller.js"></script>
+    <script src="app/InstrumentoACAP/acap.controller.js"></script>
+    <script src="app/InstrumentoICAI/icai.directives.js"></script>
+    <script src="app/InstrumentoICAI/icai.controller.js"></script>
+    <script src="app/index.run.js"></script>
+    <script src="app/index.route.js"></script>
+    <script src="app/index.directives.js"></script>
+    <script src="app/index.constants.js"></script>
+    <script src="app/index.config.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+ <div class="row">
+     <sponsors class="col-sm-12"></sponsors>    
+ </div>
+  <div class="footer col-xs-12 text-center">
+        <p>© 2015 GIE. Todos los Derechos Reservados |   <a href="#" >Instrumento de caracterización de la actividad innovadora</a> </p>
+    </div>
+  </body>
+</html>
