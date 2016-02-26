@@ -2,11 +2,16 @@
 
 var path = require('path');
 var gulp = require('gulp');
+var gulp = require('gulp'),
+cssPrefix = require('gulp-css-prefix');
 var conf = require('./conf');
 
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
+
+
+
 
 gulp.task('partials', function () {
   return gulp.src([
@@ -14,11 +19,11 @@ gulp.task('partials', function () {
     path.join(conf.paths.src, '/app/**/**/*.html'),
     path.join(conf.paths.tmp, '/serve/app/**/*.html')
   ])
-    .pipe($.minifyHtml({
+    /*.pipe($.minifyHtml({
       empty: true,
       spare: true,
       quotes: true
-    }))
+    }))*/
     .pipe($.angularTemplatecache('templateCacheHtml.js', {
       module: 'InnovationManagement',
       root: 'app'
@@ -45,21 +50,22 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe($.rev())
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
-    .pipe($.uglify({ preserveComments: $.uglifySaveLicense })).on('error', conf.errorHandler('Uglify'))
+    //.pipe($.uglify({ preserveComments: $.uglifySaveLicense })).on('error', conf.errorHandler('Uglify'))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
-    .pipe($.csso())
+    //.pipe($.csso())
+    //.pipe(cssPrefix({parentId: 'instrumentos-gie'}))
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(htmlFilter)
-    .pipe($.minifyHtml({
+   /* .pipe($.minifyHtml({
       empty: true,
       spare: true,
       quotes: true,
       conditionals: true
-    }))
+    }))*/
     .pipe(htmlFilter.restore())
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
     .pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }));
