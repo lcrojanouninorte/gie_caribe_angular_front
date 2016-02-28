@@ -1,6 +1,7 @@
 {
   "name": "jssor-slider",
   "description": "Responsive jQuery Image Slider/Slideshow/Carousel/Gallery/Banner",
+  "version": "20.0.0",
   "keywords": [
     "jquery",
     "javascript",
@@ -79,13 +80,13 @@
   "dependencies": {
     "jquery": ">= 1.4.0"
   },
-  "_release": "19.0",
+  "_release": "20.0.0",
   "_resolution": {
-    "type": "tag",
-    "tag": "19.0",
-    "commit": "f53a977b3a166b93c8d92dc3ee59c4d5577159ac"
+    "type": "version",
+    "tag": "20.0.0",
+    "commit": "5e783184d3c6a9abf2082603ec212819ba23a64c"
   },
   "_source": "git://github.com/jssor/jquery-slider.git",
-  "_target": "19.0",
+  "_target": "20.0.0",
   "_originalSource": "jssor-slider"
 }

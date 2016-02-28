@@ -7,7 +7,8 @@
 
     /** @ngInject */
     function instrument($log, $http, Restangular) {
-        var apiHost = 'https://surveyapi.herokuapp.com/';
+         var apiHost = 'https://giepiloto.herokuapp.com/';
+       // var apiHost = 'https://surveyapi.herokuapp.com/';
         //var apiHost = 'http://localhost:3002/';
         var answers_structs = {
 
@@ -344,7 +345,7 @@
 
                 var data_to = {
                     answers: {
-                        user_id: user_id
+                        user_id: user_id.toString()
                     }
                 }
             if (user_id != "" && answers_new != null) {
@@ -365,7 +366,8 @@
             $log.debug("insertando el user_id:" + user_id + " como: " + data_to + " en " + apiHost + type, data_to);
             //return $http.post(apiHost+type, data_to).
             //then(setAnswersComplete, setAnswersFailed);
-            return Restangular.all(type).post(data_to).then(setAnswersComplete, setAnswersFailed);
+             var pretty = angular.toJson(data_to);
+            return Restangular.all(type).post(pretty).then(setAnswersComplete, setAnswersFailed);
 
 
             function setAnswersComplete(response) {

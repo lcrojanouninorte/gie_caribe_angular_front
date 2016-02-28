@@ -13,7 +13,7 @@
                 templateUrl: 'app/InstrumentoICAI/icai.html',
                 controller: 'IcaiController',
                 controllerAs: 'icaiCtrl',
-                authenticate: true
+                authenticate: false
             })
             .state('imi', {
                 url: '/imi',
@@ -26,14 +26,14 @@
                 templateUrl: 'app/InstrumentoACAP/acap.html',
                 controller: 'AcapController',
                 controllerAs: 'acapCtrl',
-                authenticate: true
+                authenticate: false
             })
             .state('instrumentos', {
                 url: '/instrumentos',
                 templateUrl: 'app/Instrumentos/Instrumentos.html',
                 controller: 'InstrumentsController',
                 controllerAs: 'instCtrl',
-                authenticate: true
+                authenticate: false
             }).state('login', {
                 url: '/login',
                 templateUrl: 'app/login/login.html',
@@ -41,7 +41,7 @@
                 controllerAs: 'login'
 
 
-            })/*.state('test1', {
+            }).state('test1', {
                 url: '/test1',
                 templateUrl: 'app/InstrumentosAux/test1.html',
                 controller: 'LoginController',
@@ -92,7 +92,7 @@
                 controller: 'InstAux1Controller',
                 controllerAs: 'vm',
 
-            })*/.state('password_reset', {
+            }).state('password_reset', {
                 url: '/password/reset?:token',
                 templateUrl: 'app/Password/resetPassword.html',
                 controller: 'ResetPasswordController',

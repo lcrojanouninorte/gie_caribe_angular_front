@@ -8,15 +8,14 @@
     if (typeof module !== 'undefined' && module.exports) {
         // CommonJS
         if (typeof angular === 'undefined') {
-            module.exports = factory(require('angular'));
+            factory(require('angular'));
         } else {
-            module.exports = factory(angular);
+            factory(angular);
         }
+        module.exports = 'ngDialog';
     } else if (typeof define === 'function' && define.amd) {
         // AMD
-        define(['ng-dialog'], function () {
-          factory(root.angular);
-        });
+        define(['angular'], factory);
     } else {
         // Global Variables
         factory(root.angular);
@@ -37,6 +36,8 @@
     var scopes = {};
     var openIdStack = [];
     var keydownIsBound = false;
+    var openOnePerName = false;
+
 
     m.provider('ngDialog', function () {
         var defaults = this.defaults = {
@@ -71,6 +72,10 @@
 
         this.setDefaults = function (newDefaults) {
             angular.extend(defaults, newDefaults);
+        };
+
+        this.setOpenOnePerName = function (isOpenOne) {
+            openOnePerName = isOpenOne || false;
         };
 
         var globalID = 0, dialogsCount = 0, closeByDocumentHandler, defers = {};
@@ -439,6 +444,7 @@
                 };
 
                 var publicMethods = {
+                    __PRIVATE__: privateMethods,
 
                     /*
                      * @param {Object} options:
@@ -453,16 +459,22 @@
                      * - closeByEscape {Boolean} - default true
                      * - closeByDocument {Boolean} - default true
                      * - preCloseCallback {String|Function} - user supplied function name/function called before closing dialog (if set)
-                     *
                      * @return {Object} dialog
                      */
                     open: function (opts) {
+                        var dialogID = null;
+                        opts = opts || {};
+                        if (openOnePerName && opts.name) {
+                            dialogID = opts.name+' dialog';
+                            if (this.isOpen(dialogID)) {
+                                return;
+                            }
+                        }
                         var options = angular.copy(defaults);
                         var localID = ++globalID;
-                        var dialogID = 'ngdialog' + localID;
+                        dialogID = dialogID || 'ngdialog' + localID;
                         openIdStack.push(dialogID);
 
-                        opts = opts || {};
                         angular.extend(options, opts);
 
                         var defer;
@@ -491,7 +503,7 @@
                             }
 
                             var hasOverlayClass = options.overlay ? '' : ' ngdialog-no-overlay';
-                            $dialog = $el('<div id="ngdialog' + localID + '" class="ngdialog' + hasOverlayClass + '"></div>');
+                            $dialog = $el('<div id="'+dialogID + '" class="ngdialog' + hasOverlayClass + '"></div>');
                             $dialog.html((options.overlay ?
                                 '<div class="ngdialog-overlay"></div><div class="ngdialog-content" role="document">' + template + '</div>' :
                                 '<div class="ngdialog-content" role="document">' + template + '</div>'));
@@ -502,7 +514,7 @@
 
                             if (options.data && angular.isString(options.data)) {
                                 var firstLetter = options.data.replace(/^\s*/, '')[0];
-                                scope.ngDialogData = (firstLetter === '{' || firstLetter === '[') ? angular.fromJson(options.data) : options.data;
+                                scope.ngDialogData = (firstLetter === '{' || firstLetter === '[') ? angular.fromJson(options.data) : new String(options.data);
                                 scope.ngDialogData.ngDialogId = dialogID;
                             } else if (options.data && angular.isObject(options.data)) {
                                 scope.ngDialogData = options.data;
@@ -565,10 +577,15 @@
                                         $scope: scope,
                                         $element: $dialog
                                     }),
-                                    null,
+                                    true,
                                     label
                                 );
-                                $dialog.data('$ngDialogControllerController', controllerInstance);
+
+                                if(options.bindToController) {
+                                    angular.extend(controllerInstance.instance, {ngDialogId: scope.ngDialogId, ngDialogData: scope.ngDialogData, closeThisDialog: scope.closeThisDialog});
+                                }
+
+                                $dialog.data('$ngDialogControllerController', controllerInstance());
                             }
 
                             $timeout(function () {
@@ -686,11 +703,9 @@
                      */
                     openConfirm: function (opts) {
                         var defer = $q.defer();
+                        var options = angular.copy(defaults);
 
-                        var options = {
-                            closeByEscape: false,
-                            closeByDocument: false
-                        };
+                        opts = opts || {};
                         angular.extend(options, opts);
 
                         options.scope = angular.isObject(options.scope) ? options.scope.$new() : $rootScope.$new();
@@ -701,14 +716,15 @@
                         };
 
                         var openResult = publicMethods.open(options);
-                        openResult.closePromise.then(function (data) {
-                            if (data) {
-                                return defer.reject(data.value);
-                            }
-                            return defer.reject();
-                        });
-
-                        return defer.promise;
+                        if (openResult) {
+                            openResult.closePromise.then(function (data) {
+                                if (data) {
+                                    return defer.reject(data.value);
+                                }
+                                return defer.reject();
+                            });
+                            return defer.promise;
+                        }
                     },
 
                     isOpen: function(id) {

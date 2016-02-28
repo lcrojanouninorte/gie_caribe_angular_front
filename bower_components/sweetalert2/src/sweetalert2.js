@@ -208,7 +208,11 @@
   window.sweetAlert = window.swal = function() {
     // Copy arguments to the local args variable
     var args = arguments;
-    if (getModal() !== null) {
+    var modal = getModal();
+    if (modal !== null) {
+        if (hasClass(modal, 'visible')) {
+          resetPrevState();
+        }
         // If getModal returns values then continue
         modalDependant.apply(this, args);
     } else {
@@ -313,8 +317,8 @@
     var onButtonEvent = function(event) {
       var e = event || window.event;
       var target = e.target || e.srcElement;
-      var targetedConfirm = hasClass(target, 'confirm');
-      var targetedCancel  = hasClass(target, 'cancel');
+      var targetedConfirm = hasClass(target, 'sweet-confirm');
+      var targetedCancel  = hasClass(target, 'sweet-cancel');
       var modalIsVisible  = hasClass(modal, 'visible');
 
       switch (e.type) {
@@ -353,10 +357,7 @@
           } else if (params.callback && modalIsVisible) { // Clicked 'cancel'
 
             // Check if callback function expects a parameter (to track cancel actions)
-            var functionAsStr          = String(params.callback).replace(/\s/g, '');
-            var functionHandlesCancel  = functionAsStr.substring(0, 9) === 'function(' && functionAsStr.substring(9, 10) !== ')';
-
-            if (functionHandlesCancel) {
+            if (params.callback.length > 0) {
               params.callback(false);
             }
 
@@ -388,21 +389,54 @@
 
       if (target === getOverlay() && params.allowOutsideClick) {
         closeModal();
+        if (typeof params.callback === 'function') {
+          params.callback();
+        }
       }
     };
 
     // Keyboard interactions
-    var $confirmButton = modal.querySelector('button.confirm');
-    var $cancelButton = modal.querySelector('button.cancel');
-    var $modalElements = modal.querySelectorAll('button, input:not([type=hidden]), textarea');
+    var $confirmButton = modal.querySelector('button.sweet-confirm');
+    var $cancelButton = modal.querySelector('button.sweet-cancel');
+    var $modalElements = modal.querySelectorAll('button, input:not([type=hidden]), textarea, select');
     for (i = 0; i < $modalElements.length; i++) {
       $modalElements[i].addEventListener('focus', onButtonEvent, true);
       $modalElements[i].addEventListener('blur', onButtonEvent, true);
     }
 
+    // Focus the first element (input or button)
+    setFocus(-1, 1);
+
+    function setFocus(index, increment) {
+      // search for visible elements and select the next possible match
+      for (var i = 0; i < $modalElements.length; i++) {
+        index = index + increment;
+
+        // rollover to first item
+        if (index === $modalElements.length) {
+          index = 0;
+
+        // go to last item
+        } else if (index === -1) {
+          index = $modalElements.length - 1;
+        }
+
+        // determine if element is visible, the following is borrowed from jqeury $(elem).is(':visible') implementation
+        if (
+          $modalElements[index].offsetWidth ||
+          $modalElements[index].offsetHeight ||
+          $modalElements[index].getClientRects().length
+        ) {
+          $modalElements[index].focus();
+          return;
+        }
+      }
+    }
+
     function handleKeyDown(event) {
       var e = event || window.event;
       var keyCode = e.keyCode || e.which;
+      var modalIsVisible = hasClass(modal, 'visible');
 
       if ([9,13,32,27].indexOf(keyCode) === -1) {
         // Don't do work on keys we don't care about.
@@ -421,27 +455,21 @@
 
       if (keyCode === 9) {
         // TAB
-        if (btnIndex === -1) {
-          // No button focused. Jump to the confirm button.
-          $targetElement = $confirmButton;
-        } else if (!e.shiftKey) {
+
+        // Should only happen if modal is visible
+        if (!modalIsVisible) {
+          return;
+        }
+
+        if (!e.shiftKey) {
           // Cycle to the next button
-          if (btnIndex === $modalElements.length - 1) {
-            $targetElement = $modalElements[0];
-          } else {
-            $targetElement = $modalElements[btnIndex + 1];
-          }
+          setFocus(btnIndex, 1);
         } else {
           // Cycle to the prev button
-          if (btnIndex === 0) {
-            $targetElement = $modalElements[$modalElements.length - 1];
-          } else {
-            $targetElement = $modalElements[btnIndex - 1];
-          }
+          setFocus(btnIndex, -1);
         }
 
         stopEventPropagation(e);
-        setFocus($targetElement);
 
       } else {
         if (keyCode === 13 || keyCode === 32) {
@@ -496,8 +524,9 @@
    * Add modal + overlay to DOM
    */
   window.swal.init = function() {
-    var sweetHTML = '<div class="sweet-overlay" tabIndex="-1"></div><div class="sweet-alert" tabIndex="-1"><div class="icon error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="icon warning"> <span class="body"></span> <span class="dot"></span> </div> <div class="icon info"></div> <div class="icon success"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <div class="icon custom"></div> <h2>Title</h2><p>Text</p><hr><button class="confirm">OK</button><button class="cancel">Cancel</button></div>';
+    var sweetHTML = '<div class="sweet-overlay" tabIndex="-1"></div><div class="sweet-alert" style="display: none" tabIndex="-1"><div class="icon error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="icon warning"> <span class="body"></span> <span class="dot"></span> </div> <div class="icon info"></div> <div class="icon success"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <div class="icon custom"></div> <h2>Title</h2><div class="sweet-content">Text</div><hr class="sweet-spacer"><button class="sweet-confirm">OK</button><button class="sweet-cancel">Cancel</button></div>';
     var sweetWrap = document.createElement('div');
+    sweetWrap.className = 'sweet-container';
 
     sweetWrap.innerHTML = sweetHTML;
 
@@ -547,18 +576,22 @@
     head.appendChild(cssNode);
 
     var $title = modal.querySelector('h2');
-    var $text = modal.querySelector('p');
-    var $cancelBtn = modal.querySelector('button.cancel');
-    var $confirmBtn = modal.querySelector('button.confirm');
-    var $btnSpacer = modal.querySelector('hr');
+    var $content = modal.querySelector('div.sweet-content');
+    var $cancelBtn = modal.querySelector('button.sweet-cancel');
+    var $confirmBtn = modal.querySelector('button.sweet-confirm');
+    var $btnSpacer = modal.querySelector('hr.sweet-spacer');
 
     // Title
     $title.innerHTML = escapeHtml(params.title).split('\n').join('<br>');
 
-    // Text
-    $text.innerHTML = escapeHtml(params.text.split('\n').join('<br>')) || params.html;
-    if ($text.innerHTML) {
-      show($text);
+    // Content
+    if (window.jQuery) {
+      $content = $($content).html(params.html || ('<p>' + escapeHtml(params.text.split('\n').join('<br>'))) + '</p>');
+    } else {
+      $content.innerHTML = params.html || ('<p>' + escapeHtml(params.text.split('\n').join('<br>')) + '</p>');
+      if ($content.innerHTML) {
+        show($content);
+      }
     }
 
     //Custom Class
@@ -640,6 +673,8 @@
     // Buttons spacer
     if (!params.showConfirmButton && !params.showCancelButton) {
       hide($btnSpacer);
+    } else {
+      show($btnSpacer);
     }
 
     // Edit text on cancel and confirm buttons
@@ -651,7 +686,9 @@
     $cancelBtn.style.backgroundColor = params.cancelButtonColor;
 
     // Add buttons custom classes
+    $confirmBtn.className = 'sweet-confirm';
     addClass($confirmBtn, params.confirmButtonClass);
+    $cancelBtn.className = 'sweet-cancel';
     addClass($cancelBtn, params.cancelButtonClass);
 
     // CSS animation
@@ -692,11 +729,6 @@
     }
 
     return a;
-  }
-
-  // set focus (if button, make bgcolor darker)
-  function setFocus($targetElement) {
-    $targetElement.focus();
   }
 
   /*
@@ -740,7 +772,19 @@
     removeClass($warningIcon.querySelector('.body'), 'pulse-warning-ins');
     removeClass($warningIcon.querySelector('.dot'), 'pulse-warning-ins');
 
-    // Reset the page to its previous state
+    resetPrevState();
+
+    // Remove dynamically created media query
+    var head = document.getElementsByTagName('head')[0];
+    var mediaquery = document.getElementById(mediaqueryId);
+    if (mediaquery) {
+      head.removeChild(mediaquery);
+    }
+  }
+
+  // Reset the page to its previous state
+  function resetPrevState() {
+    var modal = getModal();
     window.onkeydown = previousWindowKeyDown;
     document.onclick = previousDocumentClick;
     if (previousActiveElement) {
@@ -748,11 +792,6 @@
     }
     lastFocusedButton = undefined;
     clearTimeout(modal.timeout);
-
-    // Remove dynamically created media query
-    var head = document.getElementsByTagName('head')[0];
-    var mediaquery = document.getElementById(mediaqueryId);
-    head.removeChild(mediaquery);
   }
 
   /*

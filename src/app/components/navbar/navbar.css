@@ -9,6 +9,7 @@
   .navbar {
 	margin-bottom: 0px; 
     background-image: url("../assets/material1.jpg");
+        background-image: url("../../assets/material1.jpg");
     background-image: url("../../../assets/material1.jpg");
 }
  

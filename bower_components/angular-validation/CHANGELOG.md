@@ -1,3 +1,59 @@
+27 Jan 2016 v1.4.1 
+===
+
+**Improvement**
+
+[#137](https://github.com/huei90/angular-validation/commit/3b18df1cda799d4135947ba05169c149d128b28f)  Support Angular 1.4.x version
+<br/>[#180](https://github.com/huei90/angular-validation/pull/180) Add code coverage using coveralls and write more tests
+<br/>[#184](https://github.com/huei90/angular-validation/pull/184) Support compiling validation output message
+
+**New Featuers**
+<br/>[#175](https://github.com/huei90/angular-validation/pull/175) Add `validation-group` directive to support group validation, checkboxes, radios, text fields, and etc
+<br/>[#183](https://github.com/huei90/angular-validation/pull/183) Support custom message element and update parameter for setErrorHTML() and setSuccessHTML()
+
+17 Dec 2015 v1.4.0 (Support AngularJS 1.4)
+===
+
+:celebration: :party:
+
+17 Dec 2015 v1.3.4 (Moving to v1.4)
+===
+
+**Improvement**
+
+[#113](https://github.com/huei90/angular-validation/pull/162) removing directive scope dependency
+<br/>[#168](https://github.com/huei90/angular-validation/pull/168) Added a global valid method
+
+**Fix**
+
+[0946ed4](https://github.com/huei90/angular-validation/commit/0946ed4ab22611aaf68b625ac9028a9767f012f7) FIX provider.setSuccess/ErrorMessage & no-validation-message
+
+**Documentation**
+
+[#164](https://github.com/huei90/angular-validation/issues/164) Improve the HTML documentation
+
+31 Oct 2015 v1.3.3
+===
+
+**Improvement**
+
+[00ce51c](https://github.com/huei90/angular-validation/commit/00ce51cb85c21a7699c7faecc4a173e0834daadb) Updated `travis.yml`
+<br/>[6f9403d](https://github.com/huei90/angular-validation/pull/143) Added the `package.js` in order to support Meteor package
+<br/>[a872d4c](https://github.com/huei90/angular-validation/pull/147) Did refactoring the project
+
+**Fix**
+
+[331d2eb](https://github.com/huei90/angular-validation/commit/331d2eb2fd68d11532fe612453861c263577fb58) Wrapped `validation-reset` within $timeout
+<br/>[e53469c](https://github.com/huei90/angular-validation/commit/e53469c08a7e6e4ef7c8a60c0e67683bd7dd68ad) Fixed `no-validation-message` condition
+<br/>[4dcdb68](https://github.com/huei90/angular-validation/pull/140) Set an actual value from the control's view (ctrl.$viewValue instead of watch value)
+<br/>[09aed2e](https://github.com/huei90/angular-validation/pull/145) Fixed an error in the checkValid function
+
+
+**Documentation**
+
+[eeac2f0](https://github.com/huei90/angular-validation/commit/eeac2f02552621f743899dc2d1bd61194f1977d4) Updated API.md to include an `ng-model-options` example
+
+
 10 Aug 2015 v1.3.2
 ===
 

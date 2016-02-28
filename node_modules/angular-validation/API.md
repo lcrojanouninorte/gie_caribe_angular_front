@@ -46,6 +46,20 @@ You can also add a custom validation message by using `message-id` attribute. It
 <span id="message"></span>
 ```
 
+### **Use a validation group** <br/>
+You can also add a `validation-group` directive to group many elements into a group. The group will be considered as valid if and only if one of them is valid. Otherwise, the group will be marked as invalid. A valid/invalid message will be placed inside an element that contains an id attribute with the same name as provided to the directive `validation-group`.
+
+```html
+<label>Validation group</label>
+<!-- Group both of these elements inside the contact group -->
+<input type="text" name="email" ng-model="email" validator="required" validation-group="contact"> 
+<input type="number" name="telephone" ng-model="telephone" validator="number" validation-group="contact">
+<!-- The message will be placed in side the span element -->
+<span id="contact"></span>
+```
+
+> Note that the `validation-group` directive can only be used to group elements placed in the same form. In other words, you can't group elements across different `<form>` tags.
+
 <a name="no-validation-message"></a>
 ### **Don't show the Valid Message `no-validation-message="true"`**
 
@@ -73,6 +87,8 @@ You can also add a custom validation message by using `message-id` attribute. It
 
 <label>Blur method</label>
 <input type="text" name="number" ng-model="form.number" validator="number" valid-method="blur"/>
+<!-- or try ng-model-options="{ updateOn: 'blur' }" -->
+<input type="text" name="number" ng-model="form.number" validator="number" ng-model-options="{ updateOn: 'blur' }"/>
 
 <label>Submit method</label>
 <form name="Form">
@@ -117,6 +133,10 @@ You can also add a custom validation message by using `message-id` attribute. It
 
 <!-- Clean, right ? -->
 ```
+
+### **Select a global validation method** `watch blur submit submit-only`**
+
+`validationProvider.setValidMethod('submit')`
 
 ### **Setup a new Validation `setExpression()` `setDefaultMsg()` with `RegExp` or `Function` in config phase**
 <a name="custom-function-huei"></a>
@@ -225,13 +245,17 @@ in `getDefaultMsg()`,and finally return the HTML code
 ```javascript
 // your angular
 .config(['$validationProvider', function ($validationProvider) {
-    $validationProvider.setErrorHTML(function (msg) {
+    $validationProvider.setErrorHTML(function (msg, element, attrs) {
         // remember to return your HTML
         // eg: return '<p class="invalid">' + msg + '</p>';
+        // or using filter
+        // eg: return '<p class="invalid">{{"' + msg + '"| lowercase}}</p>';
     });
 
-    $validationProvider.setSuccessHTML(function (msg) {
+    $validationProvider.setSuccessHTML(function (msg, element, attrs) {
         // eg: return '<p class="valid">' + msg + '</p>';
+        // or using filter
+        // eg: return '<p class="valid">{{"' + msg + '"| lowercase}}</p>';
     });
 }]);
 ```
@@ -293,7 +317,7 @@ angular.module('yourApp', ['validation'])
 Intial Validation for the input false. You can make it to true!
 
 ```html
-<!-- default fase -->
+<!-- default false -->
 <input type="text" name="firstName" ng-model="firstName" validator="required"/>
 
 <!-- set to true -->
@@ -318,4 +342,68 @@ scope.validationInvalidHandler = function(message){
   // you now have access to the error message
   displayMessage(message, 'error');
 };
+```
+
+
+### **Setup a global valid/invalid/reset callback in config phase**
+
+```javascript
+// your module
+angular.module('yourApp', ['validation'])
+    .config(['$validationProvider', function ($validationProvider) {        
+		validationProvider.validCallback = function(element) {
+			$(element).parents('.validator-container:first').removeClass('has-error').addClass('has-success-tick');
+		};
+		validationProvider.invalidCallback = function(element) {
+			$(element).parents('.validator-container:first').removeClass('has-success-tick').addClass('has-error');
+		};
+		validationProvider.resetCallback = function(element) {
+			$(element).parents('.validator-container:first').removeClass('has-error');
+		};
+    }]);
+```
+
+
+### **Setup Message Element in config phase**
+`WHY`
+````html
+<div>
+    <label>
+        <input type="text" name="fullName" validator="required" />
+    </label>
+    <!-- I WANT MY MESSAGE ELEMENT HERE INSTEAD AFTER input -->
+</div>
+````
+
+`HOW`
+
+In this case, I can use `message-id` attribute as a "get a job done" solution.
+Because, If you choose this solution It will increase your effort of manually putting `message-id` and define your own Message Element.
+
+You can use `addMsgElement` as a better solution to centralize & automate your configurations.
+
+```javascript
+// your module
+angular.module('yourApp', ['validation'])
+    .config(['$validationProvider', function ($validationProvider) {
+        /**
+        * Add your Msg Element
+        * @param {DOMElement} element - Your input element
+        * @return void
+        */
+        $validationProvider.addMsgElement = function(element) {
+            // Insert my own Msg Element
+            $(element).parent().append('<span></span>');
+        };
+        
+        /**
+        * Function to help validator get your Msg Element
+        * @param {DOMElement} element - Your input element
+        * @return {DOMElement}
+        */
+        $validationProvider.getMsgElement = function(element) {
+            return $(element).parent().children().last();
+        };
+
+    }]);
 ```

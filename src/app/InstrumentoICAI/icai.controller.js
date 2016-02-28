@@ -130,7 +130,7 @@
 
 
         $scope.get_user_mail = function() {
-            return $cookies.email;
+            return $cookies.get("email");
         };
 
         function compare(a, b) {
@@ -328,7 +328,7 @@ $log.debug("salio de a icai active", $cookies);
 
 
         //get response
-        $scope.user_id = $cookies.user_id;
+        $scope.user_id = $cookies.get("user_id");
         $scope.user_consult=$stateParams.id;
         if($scope.user_consult !== "" && typeof($scope.user_consult)!=="undefined" ){
             $scope.user_id = $scope.user_consult;

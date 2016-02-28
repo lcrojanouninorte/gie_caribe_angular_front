@@ -1,6 +1,9 @@
 {
   "name": "angular-centered",
-  "main": "angular-centered.js",
+  "main": [
+    "angular-centered.js",
+    "angular-centered.css"
+  ],
   "homepage": "https://github.com/iameugenejo/angular-centered",
   "authors": [
     "Eugene Jo <i.am.eugene.jo@gmail.com>"
@@ -29,14 +32,13 @@
   "devDependencies": {
     "angular-mocks": "~1.4.5"
   },
-  "_release": "ec1a443ad9",
+  "_release": "76b3ab6132",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "ec1a443ad9fe189850e6fbaa7c8c9dab67c85f8c"
+    "commit": "76b3ab61324bd73f723f720f2ecfd5d3d502790e"
   },
   "_source": "git://github.com/iameugenejo/angular-centered.git",
   "_target": "*",
-  "_originalSource": "angular-centered",
-  "_direct": true
+  "_originalSource": "angular-centered"
 }
