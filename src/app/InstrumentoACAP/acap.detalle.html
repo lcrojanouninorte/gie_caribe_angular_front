@@ -66,12 +66,26 @@
                                            
                                         </div>
                                     </div>
+                                    <div class="col-md-offset-3 col-md-6 text-center" ng-show="properties.progress>=100" ng-click="finish()">
+                                        <div class="btn-group text-center" role="group">
+                                            <button type="button" class="btn btn-md  btn-success">
+                                                <div class="glyphicon glyphicon-send"></div> Finalizar
+                                            </button>
+                                        </div>
+                                    </div>
                                     <div class="col-md-offset-3 col-md-6 text-center">
                                         <br>
                                         <br>
                                         <div class="btn-group text-center" role="group">
  
-                                        
+                                            <button type="button" class="btn btn-xs  btn-primary" ng-click="acapCtrl.changePage(1)" ng-show="!isLastPage()">
+                                                Siguiente
+                                                <div class="glyphicon glyphicon-chevron-right"></div>
+                                            </button>
+                                            <button type="button" class="btn btn-xs  btn-success" ng-click="acapCtrl.changePage(0)" ng-show="isLastPage()" modal template="myModalContent.html">
+                                                Finalizar
+                                                <div class="glyphicon glyphicon-check"></div>
+                                            </button>
                                         </div>
                                     </div>
                                 </fieldset>

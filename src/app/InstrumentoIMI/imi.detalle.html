@@ -49,10 +49,32 @@
                                  <span ng-show="sessions[page.key].showUnaswered>0" class="badge">{{sessions[page.key].unAnswered}}</span>--></tab-heading>
                                 <fieldset>
                                     <legend>
-                                       <!--<div save-btn userid="user_id" type="'imi'" answers="answers" ></div>-->
+                                       <div save-btn userid="user_id" type="'imi'" answers="answers" ></div>
                                     </legend>
                                       <ng-include src="'app/InstrumentoIMI/questions/'+sessions[page.key].url_name+'.html'" class="my-fade-animation"></ng-include>
+                                    <div class="col-md-offset-3 col-md-6 text-center" ng-show="properties.progress>=100" ng-click="finish()">
+                                        <div class="btn-group text-center" role="group">
+                                            <button type="button" class="btn btn-md  btn-success">
+                                                <div class="glyphicon glyphicon-send"></div> Finalizar
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-offset-3 col-md-6 text-center">
+                                        <br>
+                                        <br>
+                                        <div class="btn-group text-center" role="group">
+ 
+                                            <button type="button" class="btn btn-xs  btn-primary" ng-click="imiCtrl.changePage(1)" ng-show="!isLastPage()">
+                                                Siguiente
+                                                <div class="glyphicon glyphicon-chevron-right"></div>
+                                            </button>
+                                            <button type="button" class="btn btn-xs  btn-success" ng-click="icaiCtrl.changePage(0)" ng-show="isLastPage()" modal template="myModalContent.html">
+                                                Finalizar
+                                                <div class="glyphicon glyphicon-check"></div>
+                                            </button>
+                                        </div>
 
+                                    </div>
                                     <div class="col-md-offset-3 col-md-6 text-center">
                                         <br>
                                         <br>
